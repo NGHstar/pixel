@@ -1,0 +1,12 @@
+{
+  "signup": "Signup",
+  "homepage": {
+    "title": "Hello world!",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates ad officiis incidunt, corporis vitae at tempora et! Vero dolor ducimus quae eveniet autem placeat sed eos nulla laudantium? Quibusdam!"
+  },
+  "header": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  }
+}
