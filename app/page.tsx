@@ -1,8 +1,5 @@
-import LocaleSwitch from '@/components/LocaleSwitch'
-import { ModeToggle } from '@/components/ThemeToggle'
 import { Button } from '@/components/ui/button'
-import { Locale, useTranslations } from 'next-intl'
-import { cookies } from 'next/headers'
+import { useTranslations } from 'next-intl'
 
 export default function Home() {
   // ---
@@ -10,7 +7,7 @@ export default function Home() {
 
   return (
     <div
-      className="flex container mx-auto min-h-750 items-center
+      className="flex container mx-auto items-center
     justify-start max-w-5xl w-full flex-col py-32"
     >
       <main className=" z-10">
@@ -18,8 +15,6 @@ export default function Home() {
         <p>{t('description')}</p>
         <div className="flex gap-4">
           <Button variant={'primary'}>test</Button>
-          <Button variant={'outline'}>test</Button>
-          <ModeToggle />
         </div>
       </main>
     </div>

@@ -16,14 +16,15 @@ type props = {
 
 export default function LocaleSwitch({ changeLocaleAction }: props) {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">
+    <DropdownMenu modal={false}>
+      <DropdownMenuTrigger className="cursor-pointer" asChild>
+        <Button variant="outline" size="icon">
           <Languages />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem
+          className="rtl:flex-row-reverse pt-2"
           onClick={() => {
             changeLocaleAction('en' as Locale)
           }}
@@ -31,6 +32,7 @@ export default function LocaleSwitch({ changeLocaleAction }: props) {
           English
         </DropdownMenuItem>
         <DropdownMenuItem
+          className="rtl:flex-row-reverse"
           onClick={() => {
             changeLocaleAction('fa' as Locale)
           }}

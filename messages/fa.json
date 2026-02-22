@@ -7,6 +7,13 @@
   "header": {
     "features": "قابلیت ها",
     "pricing": "هزینه ها",
-    "contact": "ارتباط با ما"
+    "contact": "ارتباط با ما",
+    "signin": "ورود",
+    "signup": "ثبت نام"
+  },
+  "themes": {
+    "dark": "تاریک",
+    "light": "روشن",
+    "system": "سیستم"
   }
 }
