@@ -54,3 +54,9 @@ export default defineSchema({
     createdAt: v.number(),
   }).index('by_user', ['userId']),
 })
+
+/*
+  Plan limits:
+    - Free: 3 projects, 20 exports/month, basic features
+    - Pro: Unlimited projects/exports, all features
+*/

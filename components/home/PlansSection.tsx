@@ -65,9 +65,7 @@ const PricingCard = ({ plan, price, features, featured = '', buttonText }: Prici
         </span>
       )}
       <h3 className="text-2xl font-bold mb-4">{plan}</h3>
-      <p className="text-4xl font-extrabold text-cyan-400 mb-6">
-        {price} <span className="text-lg font-medium text-muted-foreground">/month</span>
-      </p>
+      <p className="text-4xl font-extrabold text-cyan-400 mb-6">{price}</p>
       <ul className="space-y-2 mb-6 text-slate-600 dark:text-slate-400">
         {features.map((f, i) => (
           <li key={i}>• {f}</li>
