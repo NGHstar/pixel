@@ -1,22 +1,20 @@
-import { Button } from '@/components/ui/button'
-import { useTranslations } from 'next-intl'
+'use client'
 
-export default function Home() {
+import CanvasDemo from '@/components/home/CanvasDemo'
+import HeroSection from '@/components/home/HeroSection'
+import InteractiveStats from '@/components/home/InterActiveStats'
+import PlansSection from '@/components/home/PlansSection'
+import Features from '@/components/home/Features'
+
+export default function Page() {
   // ---
-  const t = useTranslations('homepage')
-
   return (
-    <div
-      className="flex container mx-auto items-center
-    justify-start max-w-5xl w-full flex-col py-32"
-    >
-      <main className=" z-10">
-        <h1 className="text-5xl font-extrabold mb-4">{t('title')}</h1>
-        <p>{t('description')}</p>
-        <div className="flex gap-4">
-          <Button variant={'primary'}>test</Button>
-        </div>
-      </main>
-    </div>
+    <main className="dark:bg-slate-900 text-foreground min-h-screen overflow-x-hidden">
+      <HeroSection />
+      <CanvasDemo />
+      <InteractiveStats />
+      <Features />
+      <PlansSection />
+    </main>
   )
 }

@@ -11,6 +11,7 @@ import { cookies } from 'next/headers'
 import { ConvexClientProvider } from './ConvexClientProvider'
 import { ClerkProvider } from '@clerk/nextjs'
 import { shadcn } from '@clerk/themes'
+import FooterSection from '@/components/home/FooterSection'
 
 const vazir = Vazirmatn({
   variable: '--font-vazirmatn',
@@ -46,6 +47,7 @@ export default async function RootLayout({
                   <Toaster richColors />
                   {children}
                 </main>
+                <FooterSection />
               </NextIntlClientProvider>
             </ConvexClientProvider>
           </ClerkProvider>

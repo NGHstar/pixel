@@ -2,6 +2,7 @@ import { defineSchema, defineTable } from 'convex/server'
 import { v } from 'convex/values'
 
 export default defineSchema({
+  // ---
   users: defineTable({
     name: v.string(),
     email: v.string(),
@@ -17,4 +18,39 @@ export default defineSchema({
     imageUrl: v.optional(v.string()),
     tokenIdentifier: v.string(),
   }).index('by_token', ['tokenIdentifier']),
+
+  projects: defineTable({
+    // basic info
+    title: v.string(),
+    userId: v.id('users'),
+
+    // canvas
+    canvasState: v.any(),
+    width: v.number(),
+    height: v.number(),
+
+    originalImageUrl: v.optional(v.string()),
+    currentImageUrl: v.optional(v.string()),
+    thumbnailUrl: v.optional(v.string()),
+
+    // imageKit state
+    activeTransformations: v.optional(v.string()),
+    backgroundRemoved: v.optional(v.boolean()),
+
+    // organization
+    folderId: v.optional(v.id('folders')),
+
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index('by_user', ['userId'])
+    .index('by_user_updated', ['userId', 'updatedAt'])
+    .index('by_user', ['folderId']),
+
+  // ---
+  folders: defineTable({
+    name: v.string(),
+    userId: v.id('users'), // owner
+    createdAt: v.number(),
+  }).index('by_user', ['userId']),
 })

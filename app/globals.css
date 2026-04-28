@@ -124,4 +124,7 @@
   .header__link {
     @apply font-medium transition-all duration-300 hover:text-cyan-400 cursor-pointer place-self-center;
   }
+  .stat {
+    @apply text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent;
+  }
 }

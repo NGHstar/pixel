@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react'
 
-function useParallax() {
-  // ---
-  const [scrollY, setScrollY] = useState(0)
+const useParallax = (speed: number) => {
+  const [offset, setOffset] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      setOffset(window.scrollY * speed)
     }
     window.addEventListener('scroll', handleScroll)
-
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [speed])
 
-  return scrollY
+  return offset
 }
 
 export default useParallax

@@ -1,4 +1,5 @@
 {
+  "logo": "Pixel",
   "signup": "Signup",
   "homepage": {
     "title": "Hello world!",
@@ -9,11 +10,105 @@
     "pricing": "Pricing",
     "contact": "Contact",
     "signin": "Sign in",
-    "signup": "Sign up"
+    "signup": "Sign up",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "The Future of Image Creation",
+    "subtitle": "Neural background removal, Quantum upscaling, Reality-Bending Filters",
+    "button": "🌟 Experience the Magic"
+  },
+  "canvasDemo": {
+    "title": "Pixel Pro",
+    "aiTools": "AI Tools",
+    "adjust": "Adjust",
+    "resize": "Resize",
+    "crop": "Crop",
+    "canvasText": "Your Canvas"
+  },
+  "stats": {
+    "images": "Images Processed",
+    "users": "Active Users",
+    "ai": "AI Transformations",
+    "userSatisfy": "User Satisfaction"
+  },
+  "featuresHeader": {
+    "title": "Powerful AI Features",
+    "subtitle": "Everything you need to create, edit, and enhance images with professional-grade tools powered by cutting-edge AI technology"
+  },
+  "features": [
+    {
+      "icon": "✂️",
+      "title": "Smart Crop & Resize",
+      "description": "Interactive cropping with aspect ratio constraints and intelligent resizing that preserves image quality at any dimension."
+    },
+    {
+      "icon": "🎨",
+      "title": "Color & Light Adjustment",
+      "description": "Professional brightness, contrast, and saturation controls with real-time preview and auto-enhance features."
+    },
+    {
+      "icon": "🤖",
+      "title": "AI Background Removal",
+      "description": "Instantly remove or replace backgrounds using advanced AI that detects complex edges and fine details with precision."
+    },
+    {
+      "icon": "🔧",
+      "title": "AI Content Editor",
+      "description": "Edit images using natural language prompts. Remove objects, modify elements, or generate new content with AI."
+    },
+    {
+      "icon": "📏",
+      "title": "Image Extender",
+      "description": "Expand your canvas in any direction with AI-powered generative fill that seamlessly blends with existing content."
+    },
+    {
+      "icon": "⬆️",
+      "title": "AI Upscaler",
+      "description": "Enhance image resolution up to 4× using AI upscaling technology that preserves details and reduces artifacts."
+    }
+  ],
+  "plans": {
+    "title": "Unleash Power",
+    "starter": "Free",
+    "starterPrice": "$0",
+    "starterFeatures": [
+      "3 projects maximum",
+      "20 exports per month",
+      "Basic crop and resize",
+      "Color adjustments",
+      "Text tool"
+    ],
+    "pro": "Pro",
+    "proPrice": "$49/mo",
+    "proFeatures": [
+      "Unlimited projects",
+      "Unlimited Exports",
+      "All editing tools",
+      "Ai background remover",
+      "Ai image extender",
+      "Ai retouch, upscaler and more"
+    ],
+    "quantum": "Quantum",
+    "quantumPrice": "$99/mo",
+    "quantumFeatures": ["Unlimited Access", "8K Exports", "Dedicated GPU Nodes"],
+    "proBtn": "Go Pro",
+    "starterBtn": "Current Plan",
+    "quantumBtn": "Enter the Future",
+    "badge": "Popular"
+  },
+  "footer": {
+    "copyright": "pixel copyright | 2026 🧭"
   },
   "themes": {
     "dark": "Dark",
     "light": "Light",
     "system": "System"
+  },
+  "errors": {
+    "404": "This page could not be found."
+  },
+  "buttons": {
+    "backToHome": "Back to home page"
   }
 }

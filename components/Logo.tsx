@@ -1,16 +1,14 @@
-import { Jersey_10 } from 'next/font/google'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
-const pixelFont = Jersey_10({
-  variable: '--font-pixel-font',
-  subsets: ['latin'],
-  weight: '400',
-})
 function Logo() {
+  const t = useTranslations()
   return (
-    <div dir="ltr" className={`${pixelFont.className} flex items-center gap-1.5`}>
-      <Image src="/pixellogo.svg" alt="pixel logo" width={32} height={24} />
-      <p className="text-3xl translate-y-[1px] tracking-wider">Pixel</p>
+    <div className={`font-[vazirmatn] flex items-center gap-1.5`}>
+      <Image src="/pixellogo.svg" alt="pixel logo" className="rtl:rotate-180" width={32} height={24} />
+      <p className="text-2xl font-extrabold rtl:text-xl translate-y-[4px] rtl:translate-y-[0px]">
+        {t('logo')}
+      </p>
     </div>
   )
 }
