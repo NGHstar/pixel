@@ -30,12 +30,18 @@ function EditorSidebar({ project }) {
         <p className="text-sm mt-1.5 text-foreground/70">{toolConfig.description}</p>
       </div>
 
-      <div className="flex-1 p-4">{renderToolConfig(activeTool, project)}</div>
+      <div className="flex-1 p-4">
+        {
+          //todo
+          //renderToolConfig(activeTool, project)
+          renderToolConfig('adjust', project)
+        }
+      </div>
     </div>
   )
 }
 
-function renderToolConfig(activeTool, project) {
+function renderToolConfig(activeTool: string, project) {
   switch (activeTool) {
     case 'crop':
       return <CropTool />

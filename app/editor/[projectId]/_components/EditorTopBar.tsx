@@ -34,10 +34,10 @@ function EditorTopBar({ project }: { project: any }) {
 
   return (
     <>
-      <div className="border-b px-6 py-4">
+      <div className="border-b px-2 py-4">
         <div className="flex justify-between items-center mb-4">
-          <Button variant="ghost" size="sm" className="pt-2" onClick={handleBackToDashboard}>
-            <ArrowLeft className="h-4 w-4 mr-1 -translate-y-0.5" />
+          <Button variant="ghost" size="sm" className="pt-1.5" onClick={handleBackToDashboard}>
+            <ArrowLeft className="h-4 w-4 mr-0.5 -translate-y-0.5" />
             All Projects
           </Button>
 
