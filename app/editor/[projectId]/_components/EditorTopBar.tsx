@@ -4,54 +4,15 @@ import { Button } from '@/components/ui/button'
 import UpgradeModal from '@/components/UpgradeModal'
 import { useCanvas } from '@/context/canvas'
 import { usePlanAccess } from '@/hooks/use-plan-access'
+import { EditorTopSideBarTools } from '@/utils/tools'
 import { ArrowLeft, Crop, Expand, Eye, Lock, Maximize2, Palette, Sliders, Text } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-const TOOLS = [
-  {
-    id: 'resize',
-    label: 'Resize',
-    icon: Expand,
-    isActive: true,
-  },
-  {
-    id: 'crop',
-    label: 'Crop',
-    icon: Crop,
-  },
-  {
-    id: 'adjust',
-    label: 'Adjust',
-    icon: Sliders,
-  },
-  {
-    id: 'text',
-    label: 'Text',
-    icon: Text,
-  },
-  {
-    id: 'background',
-    label: 'AI Background',
-    icon: Palette,
-    proOnly: true,
-  },
-  {
-    id: 'ai_extender',
-    label: 'AI Image Extender',
-    icon: Maximize2,
-    proOnly: true,
-  },
-  {
-    id: 'ai_edit',
-    label: 'AI Editing',
-    icon: Eye,
-    proOnly: true,
-  },
-]
-
 function EditorTopBar({ project }: { project: any }) {
   // ---
+  const tools = EditorTopSideBarTools
+
   const router = useRouter()
   const [showUpgradeModal, setShowUpgradeModal] = useState<boolean>(false)
   const [restrictedTool, setRestrictedTool] = useState<any>(null)
@@ -86,7 +47,7 @@ function EditorTopBar({ project }: { project: any }) {
         </div>
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
-            {TOOLS.map(tool => {
+            {tools.map(tool => {
               // ---
               const Icon = tool.icon
               const isActive = activeTool === tool.id

@@ -30,14 +30,18 @@ function ProjectCard({ project, onEdit }: { project: any; onEdit: () => void }) 
       </div> */}
 
       <div
-        className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 duration-300 flex
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-90 duration-300 flex
       items-center justify-center gap-2"
       >
-        <Button variant="glass" className="gap-2 pt-3" onClick={onEdit}>
+        <Button variant="ghost" className="gap-2 pt-3 bg-background hover:bg-background/80" onClick={onEdit}>
           <Edit className="w-4 h-5 -translate-y-0.5" />
           Edit
         </Button>
-        <Button variant="glass" className="text-red-400 hover:text-red-300 gap-2 pt-3" onClick={handleDelete}>
+        <Button
+          variant="glass"
+          className="text-red-400 bg-white/10 hover:bg-white/15 gap-2 pt-3"
+          onClick={handleDelete}
+        >
           <Trash className="w-4 h-5 -translate-y-0.5" />
           Delete
         </Button>
