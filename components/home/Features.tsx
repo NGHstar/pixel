@@ -39,7 +39,7 @@ const FeaturesSection = () => {
 
   return (
     <section className="py-20" id="features">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, x: -40 }}

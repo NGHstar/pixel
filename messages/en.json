@@ -69,6 +69,7 @@
     }
   ],
   "plans": {
+    "limitProjectsError": "Free plan limited to 3 projects. Upgrade to Pro for unlimited projects",
     "title": "Unleash Power",
     "starter": "Free",
     "starterPrice": "$0",
