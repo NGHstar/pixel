@@ -128,3 +128,19 @@
     @apply text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent;
   }
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-foreground/10 rounded-2xl;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply dark:bg-cyan-500/30 bg-cyan-600/30 rounded-2xl;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply dark:bg-cyan-400/70 bg-cyan-500/70;
+}

@@ -34,7 +34,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir} suppressContentEditableWarning suppressHydrationWarning>
-      <body className={`${vazir.className} antialiased`}>
+      <body className={`${vazir.className} antialiased custom-scrollbar`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <ClerkProvider appearance={{ baseTheme: shadcn }}>
             <ConvexClientProvider>
