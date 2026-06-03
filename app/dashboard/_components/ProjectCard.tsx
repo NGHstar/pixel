@@ -8,26 +8,18 @@ import { formatDistanceToNow } from 'date-fns'
 
 function ProjectCard({ project, onEdit }: { project: any; onEdit: () => void }) {
   // ---
-  //   const handleDetele = useMutation(api.projects.deleteProject)
-  const handleDelete = () => {
-    alert('not implemented yet')
-  }
-
-  //todo
-  //   const lastUpdated = formatDistanceToNow(new Date(project.updatedAt), { addSuffix: true })
-  const lastUpdated = formatDistanceToNow(Date(), { addSuffix: true })
+  const handleDelete = useMutation(api.projects.deleteProject)
+  const lastUpdated = formatDistanceToNow(new Date(project.updatedAt), { addSuffix: true })
 
   return (
     <Card className="pt-0 group relative bg-foreground/5 overflow-hidden hover:border-foreground/20 duration-300">
-      <img src="batman.jpg" alt={project.title} className="w-full h-full object-cover" />
       {
-        //todo
+        <div>
+          {project.thumbnailUrl && (
+            <img src={project.thumbnailUrl} alt={project.title} className="w-full h-full object-cover" />
+          )}
+        </div>
       }
-      {/* <div>
-        {project.thumbnailUrl && (
-          <img src={project.thumbnailUrl} alt={project.title} className="w-full h-full object-cover" />
-        )}
-      </div> */}
 
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-90 duration-300 flex
@@ -40,7 +32,9 @@ function ProjectCard({ project, onEdit }: { project: any; onEdit: () => void }) 
         <Button
           variant="glass"
           className="text-red-400 bg-white/10 hover:bg-white/15 gap-2 pt-3"
-          onClick={handleDelete}
+          onClick={() => {
+            handleDelete({ projectId: project._id })
+          }}
         >
           <Trash className="w-4 h-5 -translate-y-0.5" />
           Delete

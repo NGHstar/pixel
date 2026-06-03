@@ -7,30 +7,14 @@ import { Loader2 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Canvas, FabricImage } from 'fabric'
 
-function CanvasEditor({
-  project,
-}: {
-  project: {
-    projectId: number
-    canvasState: any
-    width: number
-    height: number
-    currentImageUrl: string
-    originalImageUrl: string
-    thumbnailUrl: string
-    activeTransformations: string
-    backgroundRemoved: boolean
-  }
-}) {
+function CanvasEditor({ project }) {
   const [isLoading, setIsLoading] = useState(true)
   const canvasRef = useRef<any>(null)
   const containerRef = useRef<any>(null)
   const { canvasEditor, setCanvasEditor, activeTool, onToolChange }: any = useCanvas()
   const isInitializedRef = useRef(false)
 
-  const updateProject = (data: string) => {
-    console.log(data)
-  }
+  const updateProject = useMutation(api.projects.updateProject)
 
   const calculateViewportScale = () => {
     if (!containerRef.current || !project) return 1
@@ -266,11 +250,11 @@ function CanvasEditor({
 
     try {
       const canvasJson = canvasEditor.toJSON()
-      //todo
-      // await updateProject({
-      //   projectId: project._id,
-      //   canvasState: canvasJson,
-      // })
+
+      await updateProject({
+        projectId: project._id,
+        canvasState: canvasJson,
+      })
     } catch (error) {
       console.error('Error saving canvas state')
     }

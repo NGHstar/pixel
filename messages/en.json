@@ -93,8 +93,9 @@
     "quantum": "Quantum",
     "quantumPrice": "$99/mo",
     "quantumFeatures": ["Unlimited Access", "8K Exports", "Dedicated GPU Nodes"],
+    "current": "Current Plan",
     "proBtn": "Go Pro",
-    "starterBtn": "Current Plan",
+    "starterBtn": "Start Free",
     "quantumBtn": "Enter the Future",
     "badge": "Popular"
   },

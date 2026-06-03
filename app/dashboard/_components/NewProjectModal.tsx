@@ -1,4 +1,3 @@
-//todo npx shadcn@latest add alert dialog label
 'use client'
 
 import axios from 'axios'
@@ -7,13 +6,14 @@ import { Crown, ImageIcon, Loader2, Upload, X } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { usePlanAccess } from '@/hooks/use-plan-access'
 import { useMutation, useQuery } from 'convex/react'
-import { api } from '@/convex/_generated/api'
 import { Button } from '@/components/ui/button'
 import { useDropzone } from 'react-dropzone'
 import { Input } from '@/components/ui/input'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 import UpgradeModal from '@/components/UpgradeModal'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { api } from '@/convex/_generated/api'
 
 interface DialogProps {
   isOpen: boolean
@@ -34,13 +34,9 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
 
   const { isFree, canCreateProject } = usePlanAccess()
 
-  // todo: run convex
-  //const createProject = useMutation(api.projects.create)
-  function createProject(data: any) {
-    console.log('something')
-  }
-  // const projects = useQuery(api.projects.getUserProjects)
-  const projects = []
+  const createProject = useMutation(api.projects.create)
+  const projects = useQuery(api.projects.getUserProjects)
+
   const currentProjectsCount = projects?.length || 0
 
   const canCreate = canCreateProject(currentProjectsCount)
@@ -81,42 +77,40 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
       return
     }
 
-    toast.success('project added')
-    router.push('/editor/abc123')
+    setIsUploading(true)
 
-    // todo needs convex
-    // setIsUploading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', selectedFile)
+      formData.append('fileName', selectedFile.name)
 
-    // try {
-    //   const formData = new FormData()
-    //   formData.append('file', selectedFile)
-    //   formData.append('fileName', selectedFile.name)
+      const uploadResponse: any = await axios.post('/api/imagekit/upload', formData)
 
-    //   const uploadResponse: any = await axios.post('/api/imagekit/upload', formData)
+      if (!uploadResponse.data.success) {
+        console.log(uploadResponse)
+        throw new Error(uploadResponse.error || 'failed to upload image')
+      }
 
-    //   if (!uploadResponse.success) {
-    //     throw new Error(uploadResponse.error || 'failed to upload image')
-    //   }
+      const projectId = await createProject({
+        title: projectTitle.trim(),
+        originalImageUrl: uploadResponse.data.url,
+        currentImageUrl: uploadResponse.data.url,
+        thumbnailUrl: uploadResponse.data.thumbnailUrl,
+        width: uploadResponse.data.width || 800,
+        height: uploadResponse.data.height || 600,
+        canvasState: null,
+      })
 
-    //   const projectId = createProject({
-    //     title: projectTitle.trim(),
-    //     originalImageUrl: uploadResponse.url,
-    //     currentImageUrl: uploadResponse.url,
-    //     thumbnailUrl: uploadResponse.thumbnailUrl,
-    //     width: uploadResponse.width || 800,
-    //     height: uploadResponse.height || 600,
-    //     canvasState: null,
-    //   })
-
-    //   toast.success('Project created successfully')
-    //   router.push(`/editor/${projectId}`)
-    // } catch (error: any) {
-    //   console.log(error)
-    //   throw new Error(`something went wrong`)
-    // } finally {
-    //   setIsUploading(false)
-    //   clearImageInput()
-    // }
+      toast.success('Project created successfully')
+      router.push(`/editor/${projectId}`)
+    } catch (error: any) {
+      console.error('FULL ERROR:', error)
+      console.error('RESPONSE:', error?.response?.data)
+      toast.error(error?.response?.data?.details || error.message)
+    } finally {
+      setIsUploading(false)
+      clearImageInput()
+    }
   }
 
   useEffect(() => {
@@ -143,7 +137,7 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
     <>
       {/* بک‌دراپ ( backdrop ) */}
       <div
-        className="fixed inset-0 z-50 bg-white/5 backdrop-blur-xl transition-all duration-300"
+        className="fixed inset-0 z-50 bg-white/10 backdrop-blur-xl transition-all duration-300"
         onClick={onClose}
       />
 
@@ -177,24 +171,19 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
 
           {/* محتوای دیالوگ */}
           <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-            {
-              // todo: shadcn alert
-              /*
-                    isFree && currentProjectsCount >= 2 && (
-                    <Alert>
-                        <Crown className="w-5 h-5 text-amber-400" />
-                        <AlertDescription className="text-amber-300/80">
-                        <div className="font-semibold text-amber-400 mb-1">
-                            {currentProjectsCount === 2 ? 'Last Free Project' : 'Project Limit Reached'}
-                            {currentProjectsCount === 2
-                            ? 'This will be your last free project. Upgrade to Pixel Pro for unlimited projects.'
-                            : 'Free plan is limited to 3 projects. Upgrade to Pixel Pro to create more projects.'}
-                        </div>
-                        </AlertDescription>
-                    </Alert>
-                    )
-                */
-            }
+            {isFree && currentProjectsCount >= 2 && (
+              <Alert className="mb-6">
+                <Crown className="w-5 h-5 text-amber-400" />
+                <AlertDescription className="text-amber-300/80">
+                  <div className="font-semibold text-amber-400 mb-1">
+                    {currentProjectsCount === 2 ? 'Last Free Project' : 'Project Limit Reached'}
+                    {currentProjectsCount === 2
+                      ? 'This will be your last free project. Upgrade to Pixel Pro for unlimited projects.'
+                      : 'Free plan is limited to 3 projects. Upgrade to Pixel Pro to create more projects.'}
+                  </div>
+                </AlertDescription>
+              </Alert>
+            )}
 
             {/* Upload Area */}
             {!selectedFile ? (

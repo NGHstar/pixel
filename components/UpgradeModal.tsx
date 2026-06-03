@@ -1,6 +1,7 @@
 import { Crown, X, Zap } from 'lucide-react'
 import { Button } from './ui/button'
-import { PricingTable } from '@clerk/nextjs'
+import PricingCard from './PricingCard'
+import { useTranslations } from 'next-intl'
 
 type Tools = {
   background: string
@@ -25,6 +26,8 @@ function UpgradeModal({ isOpen, onClose, restrictedTool, reason }: props) {
     projects: 'More Than 3 Projects',
   }
 
+  const t = useTranslations('plans')
+
   return (
     <>
       {
@@ -41,7 +44,7 @@ function UpgradeModal({ isOpen, onClose, restrictedTool, reason }: props) {
         <div
           className={`
             relative bg-white dark:bg-gray-900 rounded-lg shadow-xl 
-            max-w-2xl w-full max-h-[90vh] overflow-hidden
+            max-w-3xl w-full max-h-[95vh] overflow-hidden
             animate-in fade-in zoom-in duration-300
           `}
         >
@@ -61,9 +64,9 @@ function UpgradeModal({ isOpen, onClose, restrictedTool, reason }: props) {
           </div>
 
           {/* محتوای دیالوگ */}
-          <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+          <div className="px-6 pt-0 pb-5 overflow-y-auto custom-scrollbar max-h-[calc(90vh-120px)] me-2 mt-4">
             {restrictedTool && (
-              <div className="bg-amber-500/10 border-amber-500/20 flex p-3 rounded-md gap-3">
+              <div className="bg-amber-500/10 border-amber-500/20 flex p-3 rounded-md gap-3 mb-4">
                 <Zap className="text-amber-100 w-6 h-6" />
                 <div className="text-amber-200/70">
                   <div className="font-semibold text-amber-400 mb-1">
@@ -74,17 +77,27 @@ function UpgradeModal({ isOpen, onClose, restrictedTool, reason }: props) {
                 </div>
               </div>
             )}
-            <PricingTable
-              checkoutProps={{
-                appearance: {
-                  elements: {
-                    drawerRoot: {
-                      zIndex: 1000,
-                    },
-                  },
-                },
-              }}
-            />
+            <div className="flex flex-col sm:flex-row mt-8 gap-6 justify-stretch">
+              <PricingCard
+                planName="free_user"
+                planId="free_user"
+                plan={t('starter')}
+                price={t('starterPrice')}
+                features={t.raw('starterFeatures') as string[]}
+                buttonText={t('starterBtn')}
+                currentPlanText={t('current')}
+              />
+              <PricingCard
+                planName="pro"
+                planId="cplan_3Ec8E9By5uWOu6MdTkbLdDBx4u7"
+                plan={t('pro')}
+                price={t('proPrice')}
+                features={t.raw('proFeatures') as string[]}
+                featured={t('badge')}
+                buttonText={t('proBtn')}
+                currentPlanText={t('current')}
+              />
+            </div>
           </div>
           {/* dialog footer */}
           <footer className="p-5 flex justify-end">

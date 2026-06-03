@@ -18,31 +18,15 @@ function ResizeTool({ project }) {
   const [lockAspectRatio, setLockAspectRatio] = useState<boolean>(true)
   const [selectedPreset, setSelectedPreset] = useState<any>(null)
 
-  useEffect(
-    () => {
-      setTimeout(() => {
-        window.dispatchEvent(new Event('resize'))
-      }, 500)
-    },
-    [
-      //todo data, isLoading
-    ]
-  )
+  const { updateProject, data, isLoading } = useMutation(api.projects.updateProject)
 
-  //todo
-  // const { mutate: updateProject, data, isLoading } = useMutation(api.projects.updateProject)
-  const updateProject = async proj => {
-    alert('not implemented yet (need INet' + proj)
-  }
+  if (data === null) return <div>loading...</div>
 
   const handleApplyResize = async () => {
     // ---
     if (!canvasEditor || !project || (newWidth === project.width && newHeight === project.height)) return
 
     setProcessingMessage('Resizing Canvas ...')
-
-    // todo remove fake delay
-    await new Promise(resolve => setTimeout(resolve, 2000))
 
     try {
       canvasEditor.width = newWidth
@@ -59,13 +43,12 @@ function ResizeTool({ project }) {
       canvasEditor.calcOffset()
       canvasEditor.requestRenderAll()
 
-      // todo
-      // await updateProject({
-      //   projectId: project._id,
-      //   width: newWidth,
-      //   height: newHeight,
-      //   canvasState: canvasEditor.toJSON(),
-      // })
+      await updateProject({
+        projectId: project._id,
+        width: newWidth,
+        height: newHeight,
+        canvasState: canvasEditor.toJSON(),
+      })
     } catch (error) {
       console.log('error applying resize: ', error)
     } finally {

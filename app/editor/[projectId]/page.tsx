@@ -10,28 +10,16 @@ import { RingLoader } from 'react-spinners'
 import CanvasEditor from './_components/Canvas'
 import EditorTopBar from './_components/EditorTopBar'
 import EditorSidebar from './_components/EditorSidebar'
+import { Id } from '@/convex/_generated/dataModel'
 
 function Editor() {
-  const { projectId } = useParams()
+  const { projectId } = useParams<{ projectId: Id<'projects'> }>()
 
   const [canvasEditor, setCanvasEditor] = useState<any>(null)
   const [processingMessage, setProcessingMessage] = useState('')
   const [activeTool, setActiveTool] = useState<any>(null)
 
-  // todo
-  //  const project = useQuery(api.projects.getProject, {projectId})
-  const project = {
-    projectId: 1,
-    title: 'batman',
-    canvasState: {},
-    width: 800,
-    height: 600,
-    currentImageUrl: '/batman.jpg',
-    thumbnailUrl: 'batman.jpg',
-    originalImageUrl: 'batman.jpg',
-    activeTransformations: 'something',
-    backgroundRemoved: false,
-  }
+  const project = useQuery(api.projects.getProject, { projectId })
 
   return (
     <CanvasContext.Provider

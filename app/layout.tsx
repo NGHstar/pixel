@@ -36,7 +36,16 @@ export default async function RootLayout({
     <html lang={locale} dir={dir} suppressContentEditableWarning suppressHydrationWarning>
       <body className={`${vazir.className} antialiased custom-scrollbar`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <ClerkProvider appearance={{ baseTheme: shadcn }}>
+          <ClerkProvider
+            appearance={{
+              baseTheme: shadcn,
+              elements: {
+                drawerRoot: {
+                  zIndex: 1000,
+                },
+              },
+            }}
+          >
             <ConvexClientProvider>
               <NextIntlClientProvider>
                 <Header>

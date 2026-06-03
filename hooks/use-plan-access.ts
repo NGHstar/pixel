@@ -17,8 +17,8 @@ export function usePlanAccess() {
     ai_extender: isPro,
     ai_edit: isPro,
   }
-  //todo toolId: keyof typeof planAccess
-  const hasAccess = (toolId: any) => {
+
+  const hasAccess = (toolId: keyof typeof planAccess) => {
     return planAccess[toolId] === true
   }
 

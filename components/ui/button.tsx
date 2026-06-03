@@ -19,7 +19,7 @@ const buttonVariants = cva(
         glass: 'hover:bg-foreground/10 bg-foreground/5',
         link: 'text-primary underline-offset-4 hover:underline',
         primary:
-          'bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent hover:transform cursor-pointer',
+          'bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent hover:opacity-85 cursor-pointer',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

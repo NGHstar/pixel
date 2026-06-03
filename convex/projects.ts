@@ -1,7 +1,7 @@
 import { v } from 'convex/values'
 import { mutation, query } from './_generated/server'
 import { internal } from './_generated/api'
-import { useTranslations } from 'next-intl'
+import { Id } from './_generated/dataModel'
 
 export const create = mutation({
   args: {
@@ -14,9 +14,6 @@ export const create = mutation({
     canvasState: v.any(),
   },
   handler: async (ctx, args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const t = useTranslations('plans')
-    //todo
     const user = await ctx.runQuery(internal.users.getCurrentUser)
     if (user.plan === 'free') {
       const projectCount = await ctx.db
@@ -25,10 +22,10 @@ export const create = mutation({
         .collect()
 
       if (projectCount.length >= 3) {
-        throw new Error(t('limitProjectsError'))
+        throw new Error('limit project reached')
       }
     }
-    const projectId = await ctx.db.insert('projects', {
+    const projectId: Id<'projects'> = await ctx.db.insert('projects', {
       title: args.title,
       userId: user._id,
       originalImageUrl: args.originalImageUrl,

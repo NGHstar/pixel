@@ -144,3 +144,8 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   @apply dark:bg-cyan-400/70 bg-cyan-500/70;
 }
+
+.cl-drawerContent {
+  margin-top: 5rem;
+  z-index: -100 !important;
+}

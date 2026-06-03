@@ -13,11 +13,11 @@ const FeatureCard = ({ icon, title, description }: props) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ rotateZ: -3, scale: 1.1 }}
+      whileHover={{ rotateZ: -2, scale: 1.06 }}
       transition={{
         opacity: { duration: 0.8, ease: easeInOut },
         y: { duration: 0.8, ease: easeInOut },
-        rotateZ: { duration: 0.15, ease: easeInOut },
+        rotateZ: { duration: 0.4, ease: easeInOut },
         scale: { duration: 0.15, ease: easeInOut },
       }}
       viewport={{ once: true, amount: 0.6 }}

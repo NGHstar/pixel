@@ -11,16 +11,8 @@ import ProjectsGrid from './_components/ProjectsGrid'
 function Dashboard() {
   // ---
   const [showNewProjectModal, setShowNewProjectModal] = useState(false)
-  //todo run convex
-  //const data = useQuery(api.projects.getUserProjects)
-  const data: any = [
-    {
-      _id: 1,
-      title: 'alex',
-      width: 800,
-      height: 600,
-    },
-  ]
+
+  const data = useQuery(api.projects.getUserProjects)
 
   return (
     <div className="min-h-screen pt-32 pb-16">

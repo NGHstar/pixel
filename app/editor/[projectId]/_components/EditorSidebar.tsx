@@ -10,13 +10,9 @@ function EditorSidebar({ project }) {
 
   const { activeTool } = useCanvas()
 
-  // todo
-  // const toolConfig = tools[activeTool]
+  const toolConfig = tools[activeTool]
 
-  const toolConfig = tools[0]
-
-  //todo
-  // if (!toolConfig) return
+  if (!toolConfig) return
 
   const Icon = toolConfig.icon
 
@@ -30,13 +26,7 @@ function EditorSidebar({ project }) {
         <p className="text-sm mt-1.5 text-foreground/70">{toolConfig.description}</p>
       </div>
 
-      <div className="flex-1 p-4 overflow-y-auto">
-        {
-          //todo
-          //renderToolConfig(activeTool, project)
-          renderToolConfig('resize', project)
-        }
-      </div>
+      <div className="flex-1 p-4 overflow-y-auto">{renderToolConfig(activeTool, project)}</div>
     </div>
   )
 }
@@ -52,7 +42,6 @@ function renderToolConfig(activeTool: string, project) {
     default:
       return <div>Select a tool to get started</div>
   }
-  return <></>
 }
 
 export default EditorSidebar

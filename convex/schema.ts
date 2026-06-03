@@ -45,7 +45,7 @@ export default defineSchema({
   })
     .index('by_user', ['userId'])
     .index('by_user_updated', ['userId', 'updatedAt'])
-    .index('by_user', ['folderId']),
+    .index('by_folder_id', ['folderId']),
 
   // ---
   folders: defineTable({
