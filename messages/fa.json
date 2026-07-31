@@ -1,6 +1,22 @@
 {
   "logo": "پیکسل",
   "signup": "ثبت نام",
+  "new-project-modal": {
+    "projects": "پروژه",
+    "title": "ساخت پروژه جدید",
+    "upload-title": "بارگذاری تصویر جدید",
+    "upload-title-drag-mode": "اینجا رها کنید",
+    "upload-description": "تصویر خود را به این قسمت بکشید یا همینجا کلیک کنید",
+    "upload-description-limit-mode": "اشتراک «حرفه‌ای» تهینه کنید تا پروژه های بیشتری بسازید",
+    "supported-formats": "‌فرمت‌ها:  PNG, JPG, JPEG, Webp (تا حجم 20 مگابایت)",
+    "input": {
+      "title": "عنوان پروژه",
+      "placeholder": "عنوان پروژه را وارد کنید  ..."
+    },
+    "creating": "درحال ساخت",
+    "create-button": "ساخت پروژه",
+    "cancel-button": "انصراف"
+  },
   "homepage": {
     "title": "سلام دنیا!",
     "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد."
@@ -27,7 +43,7 @@
     "canvasText": "بوم شما"
   },
   "stats": {
-    "images": "عکس‌های ویرایش شده",
+    "images": "تصاویر ویرایش شده",
     "users": "کاربران فعال",
     "ai": "پردازش‌های هوش مصنوعی",
     "userSatisfy": "رضایت کاربران"
@@ -99,5 +115,376 @@
   },
   "buttons": {
     "backToHome": "بازگشت به صفحه اصلی"
+  },
+  "dashboard": {
+    "your-projects": "پروژه‌های شما",
+    "your-projects-desc": "تصاویر خود را با قدرت AI ویرایش کنید",
+    "new-project": "پروژه جدید",
+    "noProjects": {
+      "label": "اولین پروژه خود را بسازید",
+      "description": "تصویر دلخواه خود را آپلود کنید و با ابزار های هوش مصنوعی آن را ویرایش کنید",
+      "buttonText": "شروع کنید"
+    }
+  },
+  "project-card": {
+    "edit": "ویرایش",
+    "delete": "حذف",
+    "updated": "بروزرسانی",
+    "delete-confirm": "آیا میخواهید این پروژه را حذف کنید؟"
+  },
+  "editor": {
+    "desktopRequiredTitle": "نیاز به دسکتاپ",
+    "desktopRequiredDescription": "ویرایشگر روی صفحه‌های بزرگ بهتر کار می‌کند. لطفاً این صفحه را روی دسکتاپ باز کنید.",
+    "desktopRequiredHint": "برای تجربه کامل، ویرایشگر را روی دسکتاپ یا لپ‌تاپ استفاده کنید.",
+    "loadingCanvas": "در حال بارگذاری بوم...",
+    "loadError": "بارگذاری پروژه با خطا مواجه شد",
+    "nullState": "پروژه‌ای پیدا نشد.",
+    "toast": {
+      "noUndo": "کاری برای بازگشت وجود ندارد.",
+      "undoSuccess": "بازگشت انجام شد.",
+      "undoFail": "امکان بازگشت نیست.",
+      "noRedo": "کاری برای انجام دوباره وجود ندارد.",
+      "redoSuccess": "دوباره انجام شد.",
+      "redoFail": "امکان انجام دوباره نیست.",
+      "originalImageNotFound": "تصویر اصلی پیدا نشد.",
+      "resetSuccess": "بازنشانی بوم با موفقیت انجام شد.",
+      "resetFail": "بازنشانی بوم ناموفق بود.",
+      "saveSuccess": "پروژه ذخیره شد.",
+      "saveFail": "ذخیره پروژه ناموفق بود.",
+      "exportNotReady": "بوم آماده خروجی گرفتن نیست.",
+      "exportSuccess": "خروجی آغاز شد.",
+      "exportFail": "خروجی ناموفق بود.",
+      "errorApplyingResize": "خطا در تغییر اندازه: {message}",
+      "redoTitle": "دوباره اجرا ({count} موجود)"
+    },
+    "allProjects": "همه پروژه‌ها",
+    "processingHint": "ممکن است کمی طول بکشد تا AI تصویر شما را پردازش کند.",
+    "reset": "بازنشانی",
+    "saving": "در حال ذخیره...",
+    "save": "ذخیره",
+    "export": "خروجی",
+    "exportMenu": {
+      "resolution": "خروجی {width}x{height}",
+      "format": "{format} • کیفیت {quality}%",
+      "freePlan": "خروجی‌های باقی‌مانده طرح رایگان: {count}",
+      "upgradeToPro": "برای خروجی بیشتر به پرو ارتقا دهید."
+    },
+    "exportFormats": {
+      "png": "PNG",
+      "jpeg90": "JPEG 90%",
+      "jpeg80": "JPEG 80%",
+      "webp90": "WEBP 90%"
+    },
+    "toolsLables": {
+      "resize": "تغییر اندازه",
+      "crop": "برش",
+      "adjust": "تنظیم",
+      "text": "متن",
+      "background": "پس‌زمینه",
+      "ai_extender": "گسترش دهنده AI",
+      "ai_edit": "ویرایش AI"
+    },
+    "sidebar": {
+      "toolTitles": {
+        "resize": "تغییر اندازه",
+        "crop": "برش",
+        "adjust": "تنظیم",
+        "background": "پس‌زمینه",
+        "ai_extender": "گسترش دهنده AI",
+        "text": "متن",
+        "ai_edit": "ویرایش AI"
+      },
+      "toolDescriptions": {
+        "resize": "اندازه بوم و پیش‌تنظیم‌ها را تغییر دهید.",
+        "crop": "تصویر خود را با نسبت‌های دستی یا از پیش تنظیم شده برش دهید.",
+        "adjust": "روشنایی، کنتراست، اشباع و موارد دیگر را تنظیم کنید.",
+        "background": "پس‌زمینه را حذف کنید یا پس‌زمینه جدیدی اضافه کنید.",
+        "ai_extender": "مساحت تصویر را با پر کردن هوش مصنوعی گسترش دهید.",
+        "text": "متن قابل ویرایش را به بوم خود اضافه و سبک دهید.",
+        "ai_edit": "تصاویر را رتوش کنید و بهینه‌سازی‌های هوشمندانه اعمال کنید."
+      }
+    },
+    "topbar": {
+      "allProjects": "بازگشت به داشبورد",
+      "redoTitle": "بازگرداندن",
+      "reset": "بازنشانی",
+      "save": "Save",
+      "export": "خروجی",
+      "toast": {
+        "noUndo": "کاری برای بازگشت وجود ندارد.",
+        "undoSuccess": "یک مرحله به عقب.",
+        "undoFail": "امکان بازگشت نیست.",
+        "noRedo": "کاری برای انجام دوباره وجود ندارد.",
+        "redoSuccess": "یک مرحله به جلو.",
+        "redoFail": "امکان انجام دوباره نیست.",
+        "originalImageNotFound": "تصویر اصلی پیدا نشد.",
+        "resetSuccess": "بازنشانی بوم با موفقیت انجام شد.",
+        "resetFail": "بازنشانی بوم ناموفق بود.",
+        "saveSuccess": "پروژه ذخیره شد.",
+        "saveFail": "ذخیره پروژه ناموفق بود.",
+        "exportNotReady": "بوم آماده خروجی گرفتن نیست.",
+        "exportSuccess": "خروجی آغاز شد.",
+        "exportFail": "خروجی ناموفق بود.",
+        "errorApplyingResize": "خطا در تغییر اندازه: {message}",
+        "redoTitle": "دوباره اجرا ({count} موجود)"
+      },
+      "exportMenu": {
+        "resolution": "خروجی: {width} در {height}",
+        "format": "Format"
+      },
+      "tools": {
+        "resize": "تغییر اندازه",
+        "crop": "برش",
+        "adjust": "تنظیم",
+        "text": "متن",
+        "background": "پس‌زمینه",
+        "ai_extender": "گسترش تصویر با AI",
+        "ai_edit": "ویرایش با AI"
+      },
+      "saving": "Saving..."
+    },
+    "ai_edit": {
+      "ai_retouch": "AI Retouch",
+      "imageEnhancedTitle": "تصویر بهبود یافت",
+      "imageEnhancedDescription": "",
+      "chooseStyle": "",
+      "processing": {
+        "enhancingWithPreset": "در حال بهبود تصویر با {preset}..."
+      },
+      "errors": {
+        "retouchFailed": "اعمال تغییرات ناموفق بود. لطفاً مجدد تلاش کنید."
+      },
+      "presets": {
+        "ai_upscale": {
+          "label": "بزرگ‌نمایی هوشمند",
+          "description": "افزایش کیفیت و وضوح تصویر"
+        },
+        "ai_retouch": {
+          "label": "رتوش هوشمند",
+          "description": "حذف نقص‌ها و بهبود چهره"
+        },
+        "premium_quality": {
+          "label": "کیفیت پریمیوم",
+          "description": "بهترین خروجی با جزئیات بیشتر"
+        },
+        "enhance_sharpen": {
+          "label": "افزایش وضوح",
+          "description": "شارپ‌تر و شفاف‌تر کردن تصویر"
+        }
+      },
+      "applyPreset": "اعمال تنظیم",
+      "info": {
+        "title": "ویژگی‌های هوش مصنوعی",
+        "aiRetouchLabel": "رتوش هوشمند",
+        "aiRetouch": "بهبود چهره و حذف ایرادات با هوش مصنوعی.",
+        "smartProcessingLabel": "پردازش هوشمند",
+        "smartProcessing": "بهینه‌سازی خودکار برای بهترین نتیجه.",
+        "multipleStylesLabel": "چندین سبک",
+        "multipleStyles": "انتخاب از میان سبک‌های مختلف پردازش.",
+        "instantResultsLabel": "نتیجه فوری",
+        "instantResults": "پردازش سریع و دریافت نتیجه در چند لحظه."
+      }
+    },
+    "canvas": {
+      "loading": "در حال بارگذاری بوم...",
+      "error": {
+        "savingCanvasState": "خطا در ذخیره وضعیت بوم: {message}",
+        "savingCanvasStateGeneric": "خطا در ذخیره وضعیت بوم."
+      }
+    },
+    "tools": {
+      "resize": {
+        "canvasNotReady": "بوم آماده نیست.",
+        "currentSize": "اندازه فعلی",
+        "customSize": "اندازه سفارشی",
+        "width": "عرض",
+        "height": "ارتفاع",
+        "aspectRatioLocked": "نسبت تصویر قفل شده است",
+        "freeResizing": "تغییر اندازه آزاد",
+        "aspectRatios": "نسبت‌های ابعاد",
+        "options": {
+          "instagramStory": "استوری اینستاگرام",
+          "instagramPost": "پست اینستاگرام",
+          "youtubeThumbnail": "کاور یوتیوب",
+          "portrait": "پرتره",
+          "facebookCover": "کاور فیسبوک",
+          "twitterHeader": "هدر توییتر"
+        },
+        "newSizePreview": "پیش‌نمایش اندازه جدید",
+        "newCanvas": "بوم جدید: {width} در {height}",
+        "canvasExpanded": "بوم گسترش می‌یابد",
+        "canvasCropped": "بوم برش داده می‌شود",
+        "objectsMaintainPosition": "اشیاء اندازه و موقعیت خود را حفظ می‌کنند.",
+        "applyResize": "اعمال تغییر اندازه",
+        "resizeDescription": "تغییر اندازه بوم: ابعاد بوم را تغییر می‌دهد.<br />نسبت‌های ابعاد: اندازه‌گیری هوشمند بر اساس بوم شما.<br />اشیاء اندازه و موقعیت خود را حفظ می‌کنند.",
+        "processing": {
+          "resizingCanvas": "در حال تغییر اندازه بوم..."
+        },
+        "toast": {
+          "errorApplyingResize": "خطا در تغییر اندازه: {message}"
+        }
+      },
+      "adjust": {
+        "title": "تنظیم تصویر",
+        "reset": "بازنشانی",
+        "applyingFilters": "در حال اعمال فیلترها...",
+        "info": "تنظیمات به‌صورت لحظه‌ای اعمال می‌شوند. برای بازگرداندن مقادیر اصلی از دکمه بازنشانی استفاده کنید.",
+        "filters": {
+          "brightness": "روشنایی",
+          "contrast": "کنتراست",
+          "saturation": "غلظت رنگ",
+          "vibrance": "سرزندگی",
+          "blur": "محو کردن (بلور)",
+          "hue": "HUE"
+        }
+      },
+      "ai_edit": {
+        "canvasNotReady": "بوم آماده نیست.",
+        "processing": {
+          "enhancingWithPreset": "در حال بهبود تصویر با {preset}..."
+        },
+        "errors": {
+          "retouchFailed": "رتوش تصویر ناموفق بود. لطفاً دوباره تلاش کنید."
+        },
+        "noImageFoundTitle": "تصویر یافت نشد",
+        "noImageFoundDescription": "لطفاً ابتدا یک تصویر به بوم اضافه کنید تا رتوش AI انجام شود.",
+        "imageEnhancedTitle": "تصویر بهبود یافت",
+        "imageEnhancedDescription": "بهینه‌سازی‌های AI روی این تصویر اعمال شده است.",
+        "chooseStyle": "سبک بهبود را انتخاب کنید",
+        "applyPreset": "اعمال {preset}",
+        "info": {
+          "title": "نحوه عملکرد رتوش AI",
+          "aiRetouchLabel": "رتوش AI:",
+          "aiRetouch": "AI بهینه‌ترین بهبودها را اعمال می‌کند.",
+          "smartProcessingLabel": "پردازش هوشمند:",
+          "smartProcessing": "جزئیات را حفظ کرده و کیفیت را افزایش می‌دهد.",
+          "multipleStylesLabel": "سبک‌های متعدد:",
+          "multipleStyles": "سبکی را انتخاب کنید که با تصویر شما مطابقت دارد.",
+          "instantResultsLabel": "نتایج فوری:",
+          "instantResults": "بهبودها را در چند ثانیه ببینید."
+        }
+      },
+      "ai_extender": {
+        "canvasNotReady": "بوم آماده نیست.",
+        "pleaseAddImage": "لطفاً ابتدا یک تصویر اضافه کنید.",
+        "processing": {
+          "extendingImage": "در حال گسترش تصویر با AI..."
+        },
+        "extensionUnavailableTitle": "گسترش در دسترس نیست",
+        "extensionUnavailableDescription": "گسترش AI را نمی‌توان روی تصاویر با پس‌زمینه حذف شده استفاده کرد. ابتدا گسترش را انجام دهید، سپس پس‌زمینه را حذف کنید.",
+        "selectExtensionDirection": "جهت گسترش را انتخاب کنید",
+        "chooseExtensionDirection": "یک جهت را برای گسترش تصویر خود انتخاب کنید.",
+        "extensionAmount": "مقدار گسترش",
+        "preview": {
+          "title": "پیش‌نمایش",
+          "current": "اندازه فعلی",
+          "extended": "اندازه گسترش‌یافته",
+          "canvas": "اندازه بوم",
+          "unchanged": "بوم دست نخورده باقی می‌ماند",
+          "direction": "جهت"
+        },
+        "errors": {
+          "extendFailed": "گسترش تصویر ناموفق بود. لطفاً دوباره تلاش کنید."
+        },
+        "applyExtension": "اعمال گسترش AI",
+        "howItWorksLabel": "نحوه عملکرد:",
+        "howItWorksDescription": "یک جهت را انتخاب کنید ← مقدار را تعیین کنید ← گسترش را اعمال کنید. AI به‌صورت هوشمند ناحیه جدید را پر می‌کند.",
+        "directions": {
+          "top": "بالا",
+          "bottom": "پایین",
+          "left": "چپ",
+          "right": "راست"
+        }
+      },
+      "background": {
+        "title": "حذف پس‌زمینه AI",
+        "description": "به‌صورت خودکار پس‌زمینه تصویر شما را با AI حذف می‌کند.",
+        "buttons": {
+          "removeBackground": "حذف پس‌زمینه تصویر",
+          "applyColor": "اعمال رنگ",
+          "clearBackground": "پاک کردن پس‌زمینه"
+        },
+        "noImageNotice": "لطفاً ابتدا یک تصویر به بوم اضافه کنید تا پس‌زمینه آن حذف شود.",
+        "tabs": {
+          "color": {
+            "title": "پس‌زمینه رنگی ثابت",
+            "description": "یک رنگ ثابت برای پس‌زمینه بوم خود انتخاب کنید."
+          },
+          "image": {
+            "title": "پس‌زمینه تصویری",
+            "description": "در Unsplash جستجو کنید و تصاویر با کیفیت بالا استفاده کنید."
+          }
+        },
+        "colorInputPlaceholder": "#ffffff",
+        "searchPlaceholder": "جستجو در Unsplash",
+        "imageAlt": "تصویر پس‌زمینه",
+        "searchResults": "نتایج جستجو ({count})",
+        "noImagesFound": "هیچ تصویری برای \"{query}\" یافت نشد",
+        "tryDifferentSearch": "یک عبارت جستجوی متفاوت را امتحان کنید.",
+        "searchPrompt": "برای تصاویر پس‌زمینه جستجو کنید.",
+        "poweredByUnsplash": "ارائه شده توسط Unsplash.",
+        "errors": {
+          "removeBackground": "حذف پس‌زمینه ناموفق بود. لطفاً دوباره تلاش کنید.",
+          "searchImages": "جستجوی تصاویر ناموفق بود. لطفاً دوباره تلاش کنید.",
+          "setBackgroundImage": "تنظیم تصویر پس‌زمینه ناموفق بود. لطفاً دوباره تلاش کنید.",
+          "unsplashApiKeyMissing": "کلید API Unsplash موجود نیست. برای ادامه جستجو آن را اضافه کنید."
+        }
+      },
+      "crop": {
+        "canvasNotReady": "بوم آماده نیست.",
+        "selectImageToCrop": "یک تصویر را برای برش انتخاب کنید.",
+        "cropModeActive": "حالت برش فعال است",
+        "cropModeActiveDescription": "کادر انتخاب را تنظیم کنید و سپس روی اعمال برش کلیک کنید.",
+        "startCropping": "شروع برش",
+        "cropAspectRatios": "نسبت‌های برش",
+        "aspectRatios": {
+          "freeform": "آزاد",
+          "square": "مربع",
+          "widescreen": "نمای عریض",
+          "portrait": "پرتره",
+          "story": "استوری"
+        },
+        "actions": {
+          "applyCrop": "اعمال برش",
+          "cancel": "لغو"
+        },
+        "applyCrop": "اعمال برش",
+        "instructions": {
+          "title": "نحوه برش:",
+          "step1": "روی \"شروع برش\" کلیک کنید.",
+          "step2": "مستطیل آبی را بکشید تا ناحیه برش انتخاب شود.",
+          "step3": "نسبت ابعاد را انتخاب کنید (اختیاری).",
+          "step4": "روی \"اعمال برش\" کلیک کنید تا نهایی شود."
+        },
+        "errors": {
+          "applyCropFailed": "اعمال برش ناموفق بود. لطفاً دوباره تلاش کنید."
+        }
+      },
+      "text": {
+        "canvasNotReady": "بوم آماده نیست.",
+        "placeholder": "یک متن وارد کنید",
+        "addText": {
+          "title": "افزودن متن",
+          "description": "برای افزودن متن قابل ویرایش به بوم کلیک کنید.",
+          "button": "افزودن متن"
+        },
+        "editSelectedText": {
+          "title": "ویرایش متن انتخاب‌شده"
+        },
+        "fontFamily": "خانواده قلم",
+        "fontSize": "اندازه قلم",
+        "textAlignment": "تراز متن",
+        "textColor": "رنگ متن",
+        "textColorPlaceholder": "#000000",
+        "formatting": "استایل‌ها",
+        "deleteText": "حذف متن",
+        "instructions": {
+          "doubleClick": "دو بار کلیک کنید",
+          "editDirectly": "هر متنی را برای ویرایش مستقیم روی بوم.",
+          "select": "انتخاب",
+          "selectText": "متن برای مشاهده گزینه‌های قالب‌بندی اینجا."
+        }
+      }
+    }
   }
 }

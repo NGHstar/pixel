@@ -6,6 +6,7 @@ import { useCanvas } from '@/context/canvas'
 import { AdjustToolOptions } from '@/utils/tools'
 import { Loader2, RotateCcw } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 const defaultValues = AdjustToolOptions.reduce((acc, option) => {
   acc[option.key] = option.defaultValue
@@ -13,7 +14,7 @@ const defaultValues = AdjustToolOptions.reduce((acc, option) => {
 }, {})
 
 function AdjustTool() {
-  // ---
+  const t = useTranslations('editor.tools.adjust')
   const [filterValues, setFilterValues] = useState(defaultValues)
   const [isApplying, setIsApplying] = useState(false)
 
@@ -105,7 +106,7 @@ function AdjustTool() {
     <div className="space-y-6">
       {/* Reset Button */}
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium">Image Adjustment</h3>
+        <h3 className="text-sm font-medium">{t('title')}</h3>
         <Button
           variant="ghost"
           size="sm"
@@ -113,7 +114,7 @@ function AdjustTool() {
           className="text-foreground/70 hover:text-foreground pt-2 px-8"
         >
           <RotateCcw className="h-4 w-4 mr-0.5 -translate-y-0.75" />
-          Reset
+          {t('reset')}
         </Button>
       </div>
       {/* Filters */}
@@ -121,7 +122,7 @@ function AdjustTool() {
         return (
           <div key={option.key} className="space-y-2">
             <div className="flex justify-between items-center">
-              <label className="text-sm">{option.label}</label>
+              <label className="text-sm">{t(option.labelKey)}</label>
               <span className="text-xs text-foreground/70">
                 {filterValues[option.key]}
                 {option.suffix || ''}
@@ -140,15 +141,13 @@ function AdjustTool() {
       })}
       {/* Info */}
       <div className="mt-8 px-3 pt-3 pb-2.5 bg-foreground/10 rounded-lg">
-        <p className="text-xs text-foreground/80">
-          Adjust are applied in real-time. Use the reset button to restore original values.
-        </p>
+        <p className="text-xs text-foreground/80">{t('info')}</p>
       </div>
 
       {isApplying && (
         <div className="flex items-center justify-center py-2">
           <Loader2 className="w-4 h-4 animate-spin" />
-          <span className="ml-2 text-xs text-foreground/70 translate-y-px">Applying filters</span>
+          <span className="ml-2 text-xs text-foreground/70 translate-y-px">{t('applyingFilters')}</span>
         </div>
       )}
     </div>

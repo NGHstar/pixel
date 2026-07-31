@@ -5,13 +5,17 @@ import { api } from '@/convex/_generated/api'
 import { useMutation } from 'convex/react'
 import { Loader2 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Canvas, FabricImage } from 'fabric'
+import { Doc } from '@/convex/_generated/dataModel'
+import { toast } from 'sonner'
 
-function CanvasEditor({ project }) {
+function CanvasEditor({ project }: { project: Doc<'projects'> }) {
+  const t = useTranslations('editor.canvas')
   const [isLoading, setIsLoading] = useState(true)
-  const canvasRef = useRef<any>(null)
-  const containerRef = useRef<any>(null)
-  const { canvasEditor, setCanvasEditor, activeTool, onToolChange }: any = useCanvas()
+  const canvasRef = useRef<null | HTMLCanvasElement>(null)
+  const containerRef = useRef<null | HTMLDivElement>(null)
+  const { canvasEditor, setCanvasEditor, activeTool, onToolChange } = useCanvas()
   const isInitializedRef = useRef(false)
 
   const updateProject = useMutation(api.projects.updateProject)
@@ -39,15 +43,6 @@ function CanvasEditor({ project }) {
       }
     }
 
-    if (canvasRef.current && (canvasRef.current as any).__fabric) {
-      try {
-        ;(canvasRef.current as any).__fabric.dispose()
-      } catch (error) {
-        console.error('Error disposing fabric canvas:', error)
-      }
-      delete (canvasRef.current as any).__fabric
-    }
-
     isInitializedRef.current = false
   }
 
@@ -62,7 +57,7 @@ function CanvasEditor({ project }) {
       }
 
       console.log('Starting canvas initialization...', {
-        projectId: project.projectId,
+        projectId: project._id,
         width: project.width,
         height: project.height,
         currentImageUrl: project.currentImageUrl,
@@ -209,7 +204,7 @@ function CanvasEditor({ project }) {
     return () => {
       cleanupCanvas()
     }
-  }, [project?.projectId])
+  }, [project._id])
 
   useEffect(() => {
     if (canvasEditor) {
@@ -256,7 +251,12 @@ function CanvasEditor({ project }) {
         canvasState: canvasJson,
       })
     } catch (error) {
-      console.error('Error saving canvas state')
+      console.error('Error saving canvas state', error)
+      if (error instanceof Error) {
+        toast.error(t('error.savingCanvasState', { message: error.message }))
+      } else {
+        toast.error(t('error.savingCanvasStateGeneric'))
+      }
     }
   }
 
@@ -264,7 +264,7 @@ function CanvasEditor({ project }) {
     if (!canvasEditor) return
 
     // debounce save function
-    let saveTimeout: any
+    let saveTimeout: NodeJS.Timeout
     const handleCanvasChange = () => {
       clearTimeout(saveTimeout)
       saveTimeout = setTimeout(() => {
@@ -321,7 +321,7 @@ function CanvasEditor({ project }) {
         <div className="absolute inset-0 flex items-center justify-center bg-foreground/20 z-10">
           <div className="flex flex-col items-center gap-2">
             <Loader2 className="animate-spin w-6 h-6 text-foreground/80" />
-            <p className="text-foreground/70 text-sm">loading canvas ...</p>
+            <p className="text-foreground/70 text-sm">{t('loading')}</p>
           </div>
         </div>
       )}

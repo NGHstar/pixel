@@ -26,9 +26,9 @@ function Header({ children }: { children: ReactNode }) {
   if (path.includes('/editor')) return null // hide navbar in editor
 
   return (
-    <header className="fixed w-full dark:bg-black/5 bg-white/30 backdrop-blur-xl border-b z-50 text-nowrap flex items-start">
+    <header className="fixed w-full dark:bg-gray-800/60 bg-white/50 backdrop-blur-xl border-b z-50 text-nowrap flex items-start">
       <div
-        className="max-w-5xl container mx-auto gap-8
+        className="max-w-6xl container mx-auto gap-8
       border-foreground/10 flex items-center justify-between p-4"
       >
         <Link href="/">
@@ -71,7 +71,9 @@ function Header({ children }: { children: ReactNode }) {
             <Link href="/dashboard">
               <Button variant="outline" className="items-center justify-center max-md:w-9">
                 <LayoutDashboard className="h-4 w-4" />
-                <span className="hidden md:flex translate-y-0.5 me-1.5">{t('dashboard')}</span>
+                <span className="hidden md:flex translate-y-0.5 rtl:translate-y-0 me-1.5">
+                  {t('dashboard')}
+                </span>
               </Button>
             </Link>
             <div className="ring-2 ring-foreground/20 rounded-full w-9 h-9">

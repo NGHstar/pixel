@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation'
 import UpgradeModal from '@/components/UpgradeModal'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { api } from '@/convex/_generated/api'
+import { useTranslations } from 'next-intl'
 
 interface DialogProps {
   isOpen: boolean
@@ -22,6 +23,7 @@ interface DialogProps {
 
 function NewProjectModal({ isOpen, onClose }: DialogProps) {
   //---
+  const t = useTranslations('new-project-modal')
 
   const router = useRouter()
 
@@ -152,10 +154,10 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
         >
           {/* هدر دیالوگ */}
           <div className="relative flex flex-col sm:flex-row items-bottom gap-2 sm:gap-4 justify-start p-5 border-b border-gray-300 dark:border-gray-800">
-            {<h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Create New project</h2>}
+            {<h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{t('title')}</h2>}
             {isFree && (
               <Badge variant="secondary" className="bg-slate-700 text-white/70 ltr:pt-1 px-3">
-                {currentProjectsCount}/3 projects
+                {currentProjectsCount}/3 {t('projects')}
               </Badge>
             )}
             <button
@@ -199,15 +201,13 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
                 <Upload className="h-12 w-12 text-foreground/50 mx-auto mb-4" />
 
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  {isDragActive ? 'Drop your image here' : 'Upload an image'}
+                  {isDragActive ? t('upload-title-drag-mode') : t('upload-title')}
                 </h3>
 
                 <p className="text-foreground/70 mb-4">
-                  {canCreate
-                    ? 'Drag and drop your image, or click to browse'
-                    : 'Upgrade to Pro to create more projects'}
+                  {canCreate ? t('upload-description') : t('upload-description-limit-mode')}
                 </p>
-                <p className="text-foreground/50 text-sm">Support PNG, JPG, JPEG, Webp up to 20MG</p>
+                <p className="text-foreground/50 text-sm">{t('supported-formats')}</p>
               </div>
             ) : (
               <div className="space-y-6">
@@ -227,13 +227,13 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
                   </Button>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="project-title">Project Title</label>
+                  <label htmlFor="project-title">{t('input.title')}</label>
                   <Input
                     id="project-title"
                     type="text"
                     value={projectTitle}
                     onChange={e => setProjectTitle(e.target.value)}
-                    placeholder="Enter project name..."
+                    placeholder={t('input.placeholder')}
                     className="pt-7 pb-6 mt-2"
                   />
                 </div>
@@ -257,13 +257,12 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
               variant="ghost"
               disabled={isUploading}
               onClick={() => {
-                setShowUpgradeModel(true)
-                // clearImageInput()
-                // onClose()
+                clearImageInput()
+                onClose()
               }}
               className=" text-foreground/70 hover:text-foreground bg-foreground/5 pb-1.5"
             >
-              Cancel
+              {t('cancel-button')}
             </Button>
             <Button
               disabled={!selectedFile || !projectTitle.trim() || isUploading}
@@ -275,10 +274,10 @@ function NewProjectModal({ isOpen, onClose }: DialogProps) {
             >
               {isUploading ? (
                 <>
-                  Creating <Loader2 className="w-4 h-4 animate-spin" />
+                  {t('creating')} <Loader2 className="w-4 h-4 animate-spin" />
                 </>
               ) : (
-                'Create Project'
+                t('create-button')
               )}
             </Button>
           </footer>

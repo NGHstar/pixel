@@ -1,99 +1,144 @@
 import { filters } from 'fabric'
-import { Crop, Expand, Eye, Maximize2, Palette, Sliders, Text } from 'lucide-react'
+import { Crop, Expand, Eye, LucideProps, Maximize2, Palette, Sliders, Text } from 'lucide-react'
+import { ToolKeys } from './types'
+import { ForwardRefExoticComponent, RefAttributes } from 'react'
 
-export const EditorTopSideBarTools = [
+export const EditorTopSideBarExportFormats = [
+  {
+    format: 'PNG',
+    quality: 1.0,
+    label: 'PNG',
+    extension: 'png',
+  },
+  {
+    format: 'JPEG',
+    quality: 0.9,
+    labelKey: 'JPEG',
+    extension: 'jpg',
+  },
+  {
+    format: 'JPEG',
+    quality: 0.8,
+    labelKey: 'JPEG',
+    extension: 'jpg',
+  },
+  {
+    format: 'WEBP',
+    quality: 0.9,
+    labelKey: 'WEBP',
+    extension: 'webp',
+  },
+]
+
+export const EditorTopSideBarTools: {
+  id: ToolKeys
+  labelKey: string
+  icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>
+  isActive?: boolean
+  proOnly?: boolean
+}[] = [
   {
     id: 'resize',
-    label: 'Resize',
+    labelKey: 'tools.resize',
     icon: Expand,
     isActive: true,
   },
   {
     id: 'crop',
-    label: 'Crop',
+    labelKey: 'tools.crop',
     icon: Crop,
   },
   {
     id: 'adjust',
-    label: 'Adjust',
+    labelKey: 'tools.adjust',
     icon: Sliders,
   },
   {
     id: 'text',
-    label: 'Text',
+    labelKey: 'tools.text',
     icon: Text,
   },
   {
     id: 'background',
-    label: 'AI Background',
+    labelKey: 'tools.background',
     icon: Palette,
     proOnly: true,
   },
   {
     id: 'ai_extender',
-    label: 'AI Image Extender',
+    labelKey: 'tools.ai_extender',
     icon: Maximize2,
     proOnly: true,
   },
   {
     id: 'ai_edit',
-    label: 'AI Editing',
+    labelKey: 'tools.ai_edit',
     icon: Eye,
     proOnly: true,
   },
 ]
 
-export const EditorSideBarTools = [
-  {
-    title: 'Resize',
+export const EditorSideBarTools = {
+  resize: {
+    titleKey: 'toolTitles.resize',
     icon: Expand,
-    description: 'Change project dimensions',
+    descriptionKey: 'toolDescriptions.resize',
   },
-  {
-    title: 'Crop',
+  crop: {
+    titleKey: 'toolTitles.crop',
     icon: Crop,
-    description: 'Crop and trim your image',
+    descriptionKey: 'toolDescriptions.crop',
   },
-  {
-    title: 'Adjust',
+  adjust: {
+    titleKey: 'toolTitles.adjust',
     icon: Sliders,
-    description: 'Brightness, contrast and more (manual saving required)',
+    descriptionKey: 'toolDescriptions.adjust',
   },
-  {
-    title: 'Background',
+  background: {
+    titleKey: 'toolTitles.background',
     icon: Palette,
-    description: 'Remove or change background',
+    descriptionKey: 'toolDescriptions.background',
   },
-  {
-    title: 'AI Extender',
+  ai_extender: {
+    titleKey: 'toolTitles.ai_extender',
     icon: Maximize2,
-    description: 'Extend image boundaries with AI',
+    descriptionKey: 'toolDescriptions.ai_extender',
   },
-  {
-    title: 'Add Text',
+  text: {
+    titleKey: 'toolTitles.text',
     icon: Text,
-    description: 'Customize in various fonts',
+    descriptionKey: 'toolDescriptions.text',
   },
-  {
-    title: 'AI Editing',
+  ai_edit: {
+    titleKey: 'toolTitles.ai_edit',
     icon: Eye,
-    description: 'Enhance image quality with AI',
+    descriptionKey: 'toolDescriptions.ai_edit',
   },
-]
+}
 
 export const ResizeToolOptions = [
-  { name: 'Instagram Story', ratio: [9, 16], label: '9:16' },
-  { name: 'Instagram Post', ratio: [1, 1], label: '1:1' },
-  { name: 'Youtube Thumbnail', ratio: [16, 9], label: '16:9' },
-  { name: 'Portrait', ratio: [2, 3], label: '2:3' },
-  { name: 'Facebook Cover', ratio: [851, 315], label: '2.7:1' },
-  { name: 'Twitter Header', ratio: [3, 1], label: '3:1' },
+  { name: 'Instagram Story', nameKey: 'options.instagramStory', ratio: [9, 16], label: '9:16' },
+  { name: 'Instagram Post', nameKey: 'options.instagramPost', ratio: [1, 1], label: '1:1' },
+  {
+    name: 'Youtube Thumbnail',
+    nameKey: 'options.youtubeThumbnail',
+    ratio: [16, 9],
+    label: '16:9',
+  },
+  { name: 'Portrait', nameKey: 'options.portrait', ratio: [2, 3], label: '2:3' },
+  {
+    name: 'Facebook Cover',
+    nameKey: 'options.facebookCover',
+    ratio: [851, 315],
+    label: '2.7:1',
+  },
+  { name: 'Twitter Header', nameKey: 'options.twitterHeader', ratio: [3, 1], label: '3:1' },
 ]
 
 export const AdjustToolOptions = [
   {
     key: 'brightness',
-    label: 'Brightness',
+    labelKey: 'filters.brightness',
     min: -100,
     max: 100,
     step: 1,
@@ -104,7 +149,7 @@ export const AdjustToolOptions = [
   },
   {
     key: 'contrast',
-    label: 'Contrast',
+    labelKey: 'filters.contrast',
     min: -100,
     max: 100,
     step: 1,
@@ -115,7 +160,7 @@ export const AdjustToolOptions = [
   },
   {
     key: 'saturation',
-    label: 'Saturation',
+    labelKey: 'filters.saturation',
     min: -100,
     max: 100,
     step: 1,
@@ -126,7 +171,7 @@ export const AdjustToolOptions = [
   },
   {
     key: 'vibrance',
-    label: 'Vibrance',
+    labelKey: 'filters.vibrance',
     min: -100,
     max: 100,
     step: 1,
@@ -137,7 +182,7 @@ export const AdjustToolOptions = [
   },
   {
     key: 'blur',
-    label: 'Blur',
+    labelKey: 'filters.blur',
     min: 0,
     max: 100,
     step: 1,
@@ -148,7 +193,7 @@ export const AdjustToolOptions = [
   },
   {
     key: 'hue',
-    label: 'Hue',
+    labelKey: 'filters.hue',
     min: -180,
     max: 180,
     step: 1,

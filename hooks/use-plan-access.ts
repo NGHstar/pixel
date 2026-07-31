@@ -1,3 +1,4 @@
+import { ToolKeys } from '@/utils/types'
 import { useAuth } from '@clerk/nextjs'
 
 export function usePlanAccess() {
@@ -18,7 +19,7 @@ export function usePlanAccess() {
     ai_edit: isPro,
   }
 
-  const hasAccess = (toolId: keyof typeof planAccess) => {
+  const hasAccess = (toolId: ToolKeys) => {
     return planAccess[toolId] === true
   }
 

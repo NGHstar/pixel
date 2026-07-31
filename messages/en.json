@@ -1,6 +1,22 @@
 {
   "logo": "Pixel",
   "signup": "Signup",
+  "new-project-modal": {
+    "projects": "Projects",
+    "title": "Create New Project",
+    "upload-title": "Upload an image",
+    "upload-title-drag-mode": "Drop your image here",
+    "upload-description": "Drag and drop your image, or click to browse",
+    "upload-description-limit-mode": "Upgrade to Pro to create more projects",
+    "supported-formats": "Support PNG, JPG, JPEG, Webp up to 20MG",
+    "input": {
+      "title": "Project Title",
+      "placeholder": "Enter project name ..."
+    },
+    "creating": "Creating",
+    "create-button": "Create Project",
+    "cancel-button": "Cancel"
+  },
   "homepage": {
     "title": "Hello world!",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates ad officiis incidunt, corporis vitae at tempora et! Vero dolor ducimus quae eveniet autem placeat sed eos nulla laudantium? Quibusdam!"
@@ -112,5 +128,370 @@
   },
   "buttons": {
     "backToHome": "Back to home page"
+  },
+  "dashboard": {
+    "your-projects": "Your Projects",
+    "your-projects-desc": "Create and manage your AI-powered image designs",
+    "new-project": "New Project",
+    "noProjects": {
+      "label": "Create Your First Project",
+      "description": "Upload an image to start editing with our powerful AI tools",
+      "buttonText": "Start Creating"
+    }
+  },
+  "project-card": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "updated": "updated",
+    "delete-confirm": "Deleting this project?"
+  },
+  "editor": {
+    "desktopRequiredTitle": "Desktop Required",
+    "desktopRequiredDescription": "The editor works best on larger screens. Please open this page on a desktop device.",
+    "desktopRequiredHint": "Use the editor on a desktop or laptop for the full experience.",
+    "loadingCanvas": "Loading canvas...",
+    "loadError": "Failed to load project",
+    "nullState": "No project found.",
+    "toast": {
+      "noUndo": "Nothing to undo.",
+      "undoSuccess": "Undo successful.",
+      "undoFail": "Unable to undo.",
+      "noRedo": "Nothing to redo.",
+      "redoSuccess": "Redo successful.",
+      "redoFail": "Unable to redo.",
+      "originalImageNotFound": "Original image not found.",
+      "resetSuccess": "Canvas reset successfully.",
+      "resetFail": "Failed to reset canvas.",
+      "saveSuccess": "Project saved.",
+      "saveFail": "Failed to save project.",
+      "exportNotReady": "Canvas not ready for export.",
+      "exportSuccess": "Export started.",
+      "exportFail": "Export failed.",
+      "errorApplyingResize": "Error applying resize: {message}",
+      "redoTitle": "Redo ({count} available)"
+    },
+    "allProjects": "All Projects",
+    "processingHint": "This may take a few moments while AI processes your image.",
+    "reset": "Reset",
+    "saving": "Saving...",
+    "save": "Save",
+    "export": "Export",
+    "exportMenu": {
+      "resolution": "Export {width}x{height}",
+      "format": "{format} • {quality}% quality",
+      "freePlan": "Free plan remaining exports: {count}",
+      "upgradeToPro": "Upgrade to Pro to export more images."
+    },
+    "exportFormats": {
+      "png": "PNG",
+      "jpeg90": "JPEG 90%",
+      "jpeg80": "JPEG 80%",
+      "webp90": "WEBP 90%"
+    },
+    "tools": {
+      "resize": "Resize",
+      "crop": "Crop",
+      "adjust": "Adjust",
+      "text": "Text",
+      "background": "Background",
+      "ai_extender": "AI Extender",
+      "ai_edit": "AI Edit"
+    },
+    "sidebar": {
+      "toolTitles": {
+        "resize": "Resize",
+        "crop": "Crop",
+        "adjust": "Adjust",
+        "background": "Background",
+        "ai_extender": "AI Extender",
+        "text": "Text",
+        "ai_edit": "AI Edit"
+      },
+      "toolDescriptions": {
+        "resize": "Change canvas size and presets.",
+        "crop": "Crop your image with manual or preset ratios.",
+        "adjust": "Adjust brightness, contrast, saturation, and more.",
+        "background": "Remove background or set a new background image.",
+        "ai_extender": "Extend the image area with AI-powered fill.",
+        "text": "Add and style editable text on your canvas.",
+        "ai_edit": "Retouch images and apply intelligent enhancements."
+      }
+    },
+    "topbar": {
+      "allProjects": "All Projects",
+      "redoTitle": "Redo",
+      "reset": "Reset",
+      "save": "Save",
+      "export": "Export",
+      "toast": {
+        "noUndo": "Nothing to undo.",
+        "undoSuccess": "Undo successful.",
+        "undoFail": "Unable to undo.",
+        "noRedo": "Nothing to redo.",
+        "redoSuccess": "Redo successful.",
+        "redoFail": "Unable to redo.",
+        "originalImageNotFound": "Original image not found.",
+        "resetSuccess": "Canvas reset successfully.",
+        "resetFail": "Failed to reset canvas.",
+        "saveSuccess": "Project saved.",
+        "saveFail": "Failed to save project.",
+        "exportNotReady": "Canvas not ready for export.",
+        "exportSuccess": "Export started.",
+        "exportFail": "Export failed.",
+        "errorApplyingResize": "Error applying resize: {message}",
+        "redoTitle": "Redo ({count} available)"
+      },
+      "exportMenu": {
+        "resolution": "Export: {width}x{height}",
+        "format": "نوع خروجی"
+      },
+      "tools": {
+        "resize": "Resize",
+        "crop": "Crop",
+        "adjust": "Adjust",
+        "text": "Text",
+        "background": "Background",
+        "ai_extender": "AI Extender",
+        "ai_edit": "AI Edit"
+      },
+      "saving": "Saving..."
+    },
+    "ai_edit": {
+      "ai_retouch": "AI Retouch",
+      "imageEnhancedTitle": "Image Enhanced Successfully",
+      "imageEnhancedDescription": "AI enhancements have been applied to this image.",
+      "chooseStyle": "Choose Enhancement Style",
+      "presets": {
+        "ai_upscale": {
+          "label": "AI Upscale",
+          "description": "Increase image quality and resolution"
+        },
+        "ai_retouch": {
+          "label": "AI Retouch",
+          "description": "Remove imperfections and enhance faces"
+        },
+        "premium_quality": {
+          "label": "Premium Quality",
+          "description": "Best output with enhanced details"
+        },
+        "enhance_sharpen": {
+          "label": "Enhance & Sharpen",
+          "description": "Make images sharper and clearer"
+        }
+      },
+      "applyPreset": "Apply Preset",
+      "info": {
+        "title": "AI Features",
+        "aiRetouchLabel": "AI Retouch",
+        "aiRetouch": "Enhance faces and remove imperfections automatically.",
+        "smartProcessingLabel": "Smart Processing",
+        "smartProcessing": "Automatically optimize images for the best results.",
+        "multipleStylesLabel": "Multiple Styles",
+        "multipleStyles": "Choose from different enhancement styles.",
+        "instantResultsLabel": "Instant Results",
+        "instantResults": "Fast processing with results in seconds."
+      }
+    },
+    "canvas": {
+      "loading": "Loading canvas...",
+      "error": {
+        "savingCanvasState": "Error saving canvas state: {message}",
+        "savingCanvasStateGeneric": "Error saving canvas state."
+      }
+    },
+    "tools": {
+      "resize": {
+        "canvasNotReady": "Canvas is not ready.",
+        "currentSize": "Current Size",
+        "customSize": "Custom Size",
+        "width": "Width",
+        "height": "Height",
+        "aspectRatioLocked": "Aspect ratio is locked",
+        "freeResizing": "Free resizing",
+        "aspectRatios": "Aspect Ratios",
+        "options": {
+          "instagramStory": "Instagram Story",
+          "instagramPost": "Instagram Post",
+          "youtubeThumbnail": "YouTube Thumbnail",
+          "portrait": "Portrait",
+          "facebookCover": "Facebook Cover",
+          "twitterHeader": "Twitter Header"
+        },
+        "newSizePreview": "New Size Preview",
+        "newCanvas": "New Canvas: {width} x {height}",
+        "canvasExpanded": "Canvas will be expanded",
+        "canvasCropped": "Canvas will be cropped",
+        "objectsMaintainPosition": "Objects will maintain their current size and position.",
+        "applyResize": "Apply Resize",
+        "resizeDescription": "Resize canvas: Changes canvas dimensions.<br />Aspect Ratios: Smart sizing based on your current canvas.<br />Objects maintain their size and position.",
+        "processing": {
+          "resizingCanvas": "Resizing canvas..."
+        },
+        "toast": {
+          "errorApplyingResize": "Error applying resize: {message}"
+        }
+      },
+      "adjust": {
+        "title": "Image Adjustment",
+        "reset": "Reset",
+        "applyingFilters": "Applying filters...",
+        "info": "Adjustments are applied in real-time. Use the reset button to restore original values.",
+        "filters": {
+          "brightness": "Brightness",
+          "contrast": "Contrast",
+          "saturation": "Saturation",
+          "vibrance": "Vibrance",
+          "blur": "Blur",
+          "hue": "Hue"
+        }
+      },
+      "ai_edit": {
+        "canvasNotReady": "Canvas is not ready.",
+        "processing": {
+          "enhancingWithPreset": "Enhancing image with {preset}..."
+        },
+        "errors": {
+          "retouchFailed": "Unable to retouch image. Please try again."
+        },
+        "noImageFoundTitle": "No Image Found",
+        "noImageFoundDescription": "Please add an image to the canvas first to use AI retouching.",
+        "imageEnhancedTitle": "Image Enhanced",
+        "imageEnhancedDescription": "AI enhancements have been applied to this image.",
+        "chooseStyle": "Choose Enhancement Style",
+        "applyPreset": "Apply {preset}",
+        "info": {
+          "title": "How AI Retouch Works",
+          "aiRetouchLabel": "AI Retouch:",
+          "aiRetouch": "AI analyzes and applies optimal improvements.",
+          "smartProcessingLabel": "Smart Processing:",
+          "smartProcessing": "Preserves details while enhancing quality.",
+          "multipleStylesLabel": "Multiple Styles:",
+          "multipleStyles": "Choose enhancement that fits your image.",
+          "instantResultsLabel": "Instant Results:",
+          "instantResults": "See improvements in seconds."
+        }
+      },
+      "ai_extender": {
+        "canvasNotReady": "Canvas is not ready.",
+        "pleaseAddImage": "Please add an image first.",
+        "processing": {
+          "extendingImage": "Extending image with AI..."
+        },
+        "extensionUnavailableTitle": "Extension Not Available",
+        "extensionUnavailableDescription": "AI Extension cannot be used on images with removed backgrounds. Use extension first, then remove background.",
+        "selectExtensionDirection": "Select Extension Direction",
+        "chooseExtensionDirection": "Choose one direction to extend your image.",
+        "extensionAmount": "Extension Amount",
+        "preview": {
+          "title": "Preview",
+          "current": "Current size",
+          "extended": "Extended size",
+          "canvas": "Canvas size",
+          "unchanged": "canvas remains unchanged",
+          "direction": "Direction"
+        },
+        "errors": {
+          "extendFailed": "Failed to extend image. Please try again."
+        },
+        "applyExtension": "Apply AI Extension",
+        "howItWorksLabel": "How it works:",
+        "howItWorksDescription": "Select one direction → Set amount → Apply extension. AI will intelligently fill the new area in that direction.",
+        "directions": {
+          "top": "Top",
+          "bottom": "Bottom",
+          "left": "Left",
+          "right": "Right"
+        }
+      },
+      "background": {
+        "title": "AI Background Removal",
+        "description": "Automatically remove the background from your image using AI.",
+        "buttons": {
+          "removeBackground": "Remove Image Background",
+          "applyColor": "Apply Color",
+          "clearBackground": "Clear Background"
+        },
+        "noImageNotice": "Please add an image to the canvas first to remove its background.",
+        "tabs": {
+          "color": {
+            "title": "Solid Color Background",
+            "description": "Choose a solid color for your canvas background."
+          },
+          "image": {
+            "title": "Image Background",
+            "description": "Search and use high-quality images from Unsplash."
+          }
+        },
+        "colorInputPlaceholder": "#ffffff",
+        "searchPlaceholder": "Search Unsplash",
+        "imageAlt": "Background image",
+        "searchResults": "Search Results ({count})",
+        "noImagesFound": "No images found for \"{query}\"",
+        "tryDifferentSearch": "Try a different search term.",
+        "searchPrompt": "Search for background images.",
+        "poweredByUnsplash": "Powered by Unsplash.",
+        "errors": {
+          "removeBackground": "Failed to remove background. Please try again.",
+          "searchImages": "Failed to search images. Please try again.",
+          "setBackgroundImage": "Failed to set background image. Please try again.",
+          "unsplashApiKeyMissing": "Unsplash API key is missing. Add it to continue searching images."
+        }
+      },
+      "crop": {
+        "canvasNotReady": "Canvas is not ready.",
+        "selectImageToCrop": "Select an image to crop.",
+        "cropModeActive": "Crop mode active",
+        "cropModeActiveDescription": "Adjust the selection box and click Apply Crop when ready.",
+        "startCropping": "Start Cropping",
+        "cropAspectRatios": "Crop Aspect Ratios",
+        "aspectRatios": {
+          "freeform": "Freeform",
+          "square": "Square",
+          "widescreen": "Widescreen",
+          "portrait": "Portrait",
+          "story": "Story"
+        },
+        "actions": {
+          "applyCrop": "Apply Crop",
+          "cancel": "Cancel"
+        },
+        "applyCrop": "Apply Crop",
+        "instructions": {
+          "title": "How to crop:",
+          "step1": "Click \"Start Cropping\".",
+          "step2": "Drag the blue rectangle to select crop area.",
+          "step3": "Choose aspect ratio (optional).",
+          "step4": "Click \"Apply Crop\" to finalize."
+        },
+        "errors": {
+          "applyCropFailed": "Failed to apply crop. Please try again."
+        }
+      },
+      "text": {
+        "canvasNotReady": "Canvas is not ready.",
+        "placeholder": "Enter text here",
+        "addText": {
+          "title": "Add Text",
+          "description": "Click to add editable text to your canvas.",
+          "button": "Add Text"
+        },
+        "editSelectedText": {
+          "title": "Edit Selected Text"
+        },
+        "fontFamily": "Font Family",
+        "fontSize": "Font Size",
+        "textAlignment": "Text Alignment",
+        "textColor": "Text Color",
+        "textColorPlaceholder": "#000000",
+        "formatting": "Formatting",
+        "deleteText": "Delete Text",
+        "instructions": {
+          "doubleClick": "Double-click",
+          "editDirectly": "any text to edit it directly on canvas.",
+          "select": "Select",
+          "selectText": "text to see formatting options here."
+        }
+      }
+    }
   }
 }

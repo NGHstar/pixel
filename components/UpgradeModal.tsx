@@ -2,18 +2,12 @@ import { Crown, X, Zap } from 'lucide-react'
 import { Button } from './ui/button'
 import PricingCard from './PricingCard'
 import { useTranslations } from 'next-intl'
-
-type Tools = {
-  background: string
-  ai_extender: string
-  ai_edit: string
-  projects: string
-}
+import { ProTools } from '@/utils/types'
 
 type props = {
   isOpen: boolean
   onClose: () => void
-  restrictedTool: keyof Tools
+  restrictedTool: keyof ProTools | null
   reason: string
 }
 
@@ -33,13 +27,13 @@ function UpgradeModal({ isOpen, onClose, restrictedTool, reason }: props) {
       {
         // todo use Dialog comp from shadcn
       }
-      {/* بک‌دراپ ( backdrop ) */}
+      {/*  ( backdrop ) */}
       <div
         className={`fixed inset-0 z-60 bg-white/5 backdrop-blur-xl transition-all duration-300 ${isOpen ? '' : 'hidden'}`}
         onClick={onClose}
       />
 
-      {/* دیالوگ اصلی */}
+      {/*  dialog */}
       <div className={`fixed inset-0 z-60 flex items-center justify-center p-4 ${isOpen ? '' : 'hidden'}`}>
         <div
           className={`
@@ -48,7 +42,7 @@ function UpgradeModal({ isOpen, onClose, restrictedTool, reason }: props) {
             animate-in fade-in zoom-in duration-300
           `}
         >
-          {/* هدر دیالوگ */}
+          {/* header */}
           <div className="relative flex flex-col sm:flex-row items-bottom gap-2 sm:gap-4 justify-start p-5 border-b border-gray-300 dark:border-gray-800">
             <div className="flex items-center gap-3">
               <Crown className="w-6 h-6 text-amber-400" />
@@ -63,7 +57,7 @@ function UpgradeModal({ isOpen, onClose, restrictedTool, reason }: props) {
             </button>
           </div>
 
-          {/* محتوای دیالوگ */}
+          {/* content */}
           <div className="px-6 pt-0 pb-5 overflow-y-auto custom-scrollbar max-h-[calc(90vh-120px)] me-2 mt-4">
             {restrictedTool && (
               <div className="bg-amber-500/10 border-amber-500/20 flex p-3 rounded-md gap-3 mb-4">

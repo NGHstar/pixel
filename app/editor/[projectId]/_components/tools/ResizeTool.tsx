@@ -4,29 +4,30 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useCanvas } from '@/context/canvas'
 import { api } from '@/convex/_generated/api'
+import { Doc } from '@/convex/_generated/dataModel'
 import { ResizeToolOptions } from '@/utils/tools'
 import { useMutation } from 'convex/react'
+import { useTranslations } from 'next-intl'
 import { Expand, Loader, Lock, Monitor, Unlock } from 'lucide-react'
-import { aspectRatio } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { toast } from 'sonner'
 
-function ResizeTool({ project }) {
+function ResizeTool({ project }: { project: Doc<'projects'> }) {
+  const t = useTranslations('editor.tools.resize')
   const { canvasEditor, processingMessage, setProcessingMessage } = useCanvas()
 
   const [newWidth, setNewWidth] = useState<number>(project?.width || 800)
   const [newHeight, setNewHeight] = useState<number>(project?.height || 600)
   const [lockAspectRatio, setLockAspectRatio] = useState<boolean>(true)
-  const [selectedPreset, setSelectedPreset] = useState<any>(null)
+  const [selectedPreset, setSelectedPreset] = useState<null | string>(null)
 
-  const { updateProject, data, isLoading } = useMutation(api.projects.updateProject)
-
-  if (data === null) return <div>loading...</div>
+  const updateProject = useMutation(api.projects.updateProject)
 
   const handleApplyResize = async () => {
     // ---
     if (!canvasEditor || !project || (newWidth === project.width && newHeight === project.height)) return
 
-    setProcessingMessage('Resizing Canvas ...')
+    setProcessingMessage(t('processing.resizingCanvas'))
 
     try {
       canvasEditor.width = newWidth
@@ -50,14 +51,17 @@ function ResizeTool({ project }) {
         canvasState: canvasEditor.toJSON(),
       })
     } catch (error) {
-      console.log('error applying resize: ', error)
+      if (error instanceof Error) {
+        console.log('error applying resize: ', error)
+        toast.error(t('toast.errorApplyingResize', { message: error.message }))
+      }
     } finally {
       setProcessingMessage('')
     }
   }
 
   const calcDimensions = (ratio: number[]) => {
-    if (!project) return { width: project.width, height: project.height }
+    if (!project) return { width: 800, height: 600 }
 
     const [ratioW, ratioH] = ratio // example: instagram [9, 16]
     const originalArea = project.width * project.height
@@ -84,7 +88,7 @@ function ResizeTool({ project }) {
     return (
       <div className="p-4 flex items-center justify-center gap-2">
         <Loader className="w-4 h-4 animate-spin -translate-y-0.75" />
-        <p className="text-foreground/70 text-sm">Canvas is not ready</p>
+        <p className="text-foreground/70 text-sm">{t('canvasNotReady')}</p>
       </div>
     )
 
@@ -117,15 +121,15 @@ function ResizeTool({ project }) {
   return (
     <div className="space-y-4">
       <div className="bg-foreground/10 rounded-lg p-3">
-        <h4 className="text-sm font-medium mb-2">Current Size</h4>
-        <div className="text-xs text-foreground/70">
+        <h4 className="text-sm font-medium mb-2">{t('currentSize')}</h4>
+        <div className="text-xs text-foreground/70 rtl:text-right" dir="ltr">
           {project.width} x {project.height}
         </div>
       </div>
 
       <div>
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold">Custom Size</h3>
+          <h3 className="text-sm font-semibold">{t('customSize')}</h3>
           <Button variant="ghost" size="icon" onClick={() => setLockAspectRatio(!lockAspectRatio)}>
             {lockAspectRatio ? <Lock className="w-4 h-4" /> : <Unlock className="w-4 h-4" />}
           </Button>
@@ -133,7 +137,7 @@ function ResizeTool({ project }) {
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label htmlFor="projectWidth" className="text-xs text-foreground/70 mb-1 block">
-              Width
+              {t('width')}
             </label>
             <Input
               id="projectWidth"
@@ -147,7 +151,7 @@ function ResizeTool({ project }) {
           </div>
           <div>
             <label htmlFor="projectHeight" className="text-xs text-foreground/70 mb-1 block">
-              Height
+              {t('height')}
             </label>
             <Input
               id="projectHeight"
@@ -161,15 +165,15 @@ function ResizeTool({ project }) {
           </div>
           <div className="flex items-center justify-between text-xs mt-1">
             <span className="text-foreground/60">
-              {lockAspectRatio ? 'Aspect ratio is locked' : 'Free resizing'}
+              {lockAspectRatio ? t('aspectRatioLocked') : t('freeResizing')}
             </span>
           </div>
         </div>
       </div>
 
       <div className="space-y-3">
-        <h3 className="text-sm font-medium">Aspect Ratios</h3>
-        <div className="custom-scrollbar grid grid-cols-1 max-h-60 gap-2 overflow-y-auto pr-3">
+        <h3 className="text-sm font-medium">{t('aspectRatios')}</h3>
+        <div className="custom-scrollbar grid grid-cols-1 max-h-60 gap-2 overflow-y-auto ltr:pr-3 rtl:pl-3 pb-4">
           {ResizeToolOptions.map(option => {
             const dimensions = calcDimensions(option.ratio)
             return (
@@ -187,8 +191,8 @@ function ResizeTool({ project }) {
                 onClick={() => applyAspectRatio(option)}
               >
                 <div>
-                  <div className="font-medium">{option.name}</div>
-                  <div className="text-xs opacity-70">
+                  <div className="font-medium rtl:text-right">{t(option.nameKey)}</div>
+                  <div className="text-xs opacity-70 rtl:text-right pt-1" dir="ltr">
                     {dimensions.width} x {dimensions.height} ({option.label})
                   </div>
                 </div>
@@ -201,19 +205,15 @@ function ResizeTool({ project }) {
 
       {hasChanges && (
         <div className="dark:bg-foreground/10 bg-foreground/5 rounded-lg p-3">
-          <h4 className="text-sm font-medium mb-2">New Size Preview</h4>
+          <h4 className="text-sm font-medium mb-2">{t('newSizePreview')}</h4>
           <div className="text-xs text-foreground/70">
-            <div>
-              New Canvas: {newWidth} x {newHeight}
-            </div>
+            <div>{t('newCanvas', { width: newWidth, height: newHeight })}</div>
             <div className="dark:text-cyan-400 text-cyan-600">
               {newWidth > project.width || newHeight > project.height
-                ? 'Canvas will be expanded'
-                : 'Canvas will be cropped'}
+                ? t('canvasExpanded')
+                : t('canvasCropped')}
             </div>
-            <div className="text-foreground/50 mt-1">
-              Objects will maintain their current size and position
-            </div>
+            <div className="text-foreground/50 mt-1">{t('objectsMaintainPosition')}</div>
           </div>
         </div>
       )}
@@ -225,17 +225,14 @@ function ResizeTool({ project }) {
         variant="primary"
       >
         <Expand className="h-4 w-4 mr-0.5 -translate-y-0.5" />
-        Apply Resize
+        {t('applyResize')}
       </Button>
 
       <div className="bg-foreground/10 rounded-lg p-3">
-        <p className="text-xs text-foreground/70">
-          <strong>Resize canvas: </strong>Changes canvas dimensions.
-          <br />
-          <strong>Aspect Ratios: </strong>Smart sizing based on your current canvas.
-          <br />
-          Objects maintain their size and position.
-        </p>
+        <p
+          className="text-xs text-foreground/70 leading-6"
+          dangerouslySetInnerHTML={{ __html: t('resizeDescription') }}
+        />
       </div>
     </div>
   )

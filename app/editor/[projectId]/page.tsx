@@ -6,18 +6,21 @@ import { useQuery } from 'convex/react'
 import { Monitor } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { RingLoader } from 'react-spinners'
 import CanvasEditor from './_components/Canvas'
 import EditorTopBar from './_components/EditorTopBar'
-import EditorSidebar from './_components/EditorSidebar'
 import { Id } from '@/convex/_generated/dataModel'
+import { Canvas } from 'fabric'
+import EditorSidebar from './_components/EditorSidebar'
 
 function Editor() {
+  const t = useTranslations('editor')
   const { projectId } = useParams<{ projectId: Id<'projects'> }>()
 
-  const [canvasEditor, setCanvasEditor] = useState<any>(null)
+  const [canvasEditor, setCanvasEditor] = useState<null | Canvas>(null)
   const [processingMessage, setProcessingMessage] = useState('')
-  const [activeTool, setActiveTool] = useState<any>(null)
+  const [activeTool, setActiveTool] = useState<string | null>('resize')
 
   const project = useQuery(api.projects.getProject, { projectId })
 
@@ -26,6 +29,7 @@ function Editor() {
       value={{
         canvasEditor,
         setCanvasEditor,
+        activeTool,
         onToolChange: setActiveTool,
         processingMessage,
         setProcessingMessage,
@@ -34,21 +38,24 @@ function Editor() {
       <div className="lg:hidden min-h-screen flex justify-center items-center p-6">
         <div className="text-center max-w-md">
           <Monitor className="w-16 h-16 text-cyan-500/80 dark:text-cyan-400/80 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold mb-4 text-foreground/90">Desktop Required</h2>
-          <p className="text-lg mb-2 text-foreground/70">This editor is only usable on desktop.</p>
-          <p className="text-sm text-foreground/60">
-            Please use a larger screen to access the full editing experience.
-          </p>
+          <h2 className="text-2xl font-bold mb-4 text-foreground/90">{t('desktopRequiredTitle')}</h2>
+          <p className="text-lg mb-2 text-foreground/70">{t('desktopRequiredDescription')}</p>
+          <p className="text-sm text-foreground/60">{t('desktopRequiredHint')}</p>
         </div>
       </div>
 
       <div className="hidden lg:block min-h-screen">
         {project === undefined ? (
-          <div>Loading...</div>
+          <div className="fixed inset-0 flex flex-col gap-5 items-center text-muted-foreground justify-center">
+            <RingLoader color="var(--color-foreground)" />
+            {t('loadingCanvas')}
+          </div>
         ) : project instanceof Error ? (
-          <div>Error: {project.message}</div>
+          <div>
+            {t('loadError')}: {project.message}
+          </div>
         ) : project === null ? (
-          <div className="flex flex-col py-20 items-center justify-center">null</div>
+          <div className="flex flex-col py-20 items-center justify-center">{t('nullState')}</div>
         ) : (
           <div>
             {/* ai process loading */}
@@ -58,9 +65,7 @@ function Editor() {
                   <RingLoader color="var(--color-foreground)" />
                   <div className="text-center">
                     <p className="font-medium">{processingMessage}</p>
-                    <p className="text-sm text-foreground/70 mt-1">
-                      Please wait, do not switch tabs or navigate away
-                    </p>
+                    <p className="text-sm text-foreground/70 mt-1">{t('processingHint')}</p>
                   </div>
                 </div>
               </div>

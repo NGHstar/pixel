@@ -1,4 +1,4 @@
-import { Vazirmatn } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { Locale, NextIntlClientProvider } from 'next-intl'
 import { getLocale } from 'next-intl/server'
@@ -13,9 +13,8 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { shadcn } from '@clerk/themes'
 import FooterSection from '@/components/home/FooterSection'
 
-const vazir = Vazirmatn({
-  variable: '--font-vazirmatn',
-  subsets: ['arabic'],
+const estedad = localFont({
+  src: './fonts/estedad.woff2',
 })
 
 export default async function RootLayout({
@@ -34,7 +33,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir} suppressContentEditableWarning suppressHydrationWarning>
-      <body className={`${vazir.className} antialiased custom-scrollbar`}>
+      <body className={`${estedad.className} antialiased custom-scrollbar`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <ClerkProvider
             appearance={{
@@ -51,7 +50,7 @@ export default async function RootLayout({
                 <Header>
                   <LocaleSwitch changeLocaleAction={changeLocaleAction} />
                 </Header>
-                <main className="dark:bg-slate-900 min-h-screen px-4">
+                <main className="dark:bg-slate-900 min-h-screen">
                   <FloatingShapes />
                   <Toaster richColors />
                   {children}
